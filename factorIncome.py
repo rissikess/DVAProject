@@ -5,8 +5,10 @@ import re
 import csv
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.decomposition import PCA
+from sklearn.lda import LDA
 import matplotlib.pyplot as plt
 from scipy.stats.stats import pearsonr
+from operator import itemgetter
 #import set
 
 
@@ -134,37 +136,75 @@ def doPCA(city, state, category):
             data = json.load(r_file)
             keyset =set()
             newdata = []
-            for datum in data:
+            labels = []
+            maxfeats = 0
+            for dno,datum in enumerate(data):
                newdatum = {}
+               label = {}
+               featcnt = 0
                for key in datum:
-                   if isinstance(datum[key], int) or isinstance(datum[key], long) or isinstance(datum[key], float) \
-                           or isinstance(datum[key], str) or isinstance(datum[key], bool):
-                       newdatum[key] = datum[key]
-                       keyset.add(key)
-                   elif isinstance(datum[key],dict):
-                       for subkey in datum[key]:
-                           keyset.add(subkey)
+                   if key == "stars":
+                       #label[key] = str(datum[key])
+                       labels.append(str(datum[key]))
                    else:
-                       keyset.add(key)
+                       if isinstance(datum[key], int) or isinstance(datum[key], long) or isinstance(datum[key], float) \
+                               or isinstance(datum[key], str) or isinstance(datum[key], bool):
+                           newdatum[key] = datum[key]
+                           keyset.add(key)
+                           featcnt+=1
+                       elif isinstance(datum[key],dict):
+                           for subkey in datum[key]:
+                               keyset.add(subkey)
+                       else:
+                            keyset.add(key)
                newdata.append(newdatum)
+               if featcnt > maxfeats:
+                   maxfeats = featcnt
+               #labels.append(label)
             #print keyset
             dv = DictVectorizer(sparse=False)
-            vectdata = dv.fit_transform(newdatum)
+            vectdata = dv.fit_transform(newdata)
             print vectdata[0]
+
             vectpca = PCA(n_components=4)
             vectpca.fit(vectdata)
 
-            correlation = []
+           # vectlabels = dv.fit_transform(labels)
+            vectlda = LDA(n_components=5)
+            ldacomps = vectlda.fit(vectdata,labels).transform(vectdata)
+
+            pcacorr = []
             for var in vectdata:
                 for comp in vectpca.components_:
                     corr = pearsonr(var, comp)
-                    print corr
-                    correlation.append(corr)
+                    #print corr
+                    pcacorr.append(corr)
 
-            for i in range(len(correlation)):
-                print correlation[i]
 
-            print correlation[0]
+            #for i in range(len(pcacorr)):
+            #    print pcacorr[i]
+
+            #print pcacorr[0]
+            print "==========================="
+            print maxfeats
+
+            for jdx, coef in enumerate(vectlda.coef_):
+                print vectlda.classes_[jdx]
+                for idx,(k,v) in enumerate(sorted(dv.vocabulary_.items(),key=itemgetter(1))):
+                    print k, coef[idx]
+                print "==============="
+            # ldacorr = []
+            # for var in vectdata:
+            #     for comp in ldacomps:
+            #         corr = pearsonr(var, comp)
+            #         #print corr
+            #         ldacorr.append(corr)
+
+
+            # for i in range(len(ldacorr)):
+            #     print ldacorr[i]
+
+            #print vectlda.coef_
             #print correlation[1]
 
 
