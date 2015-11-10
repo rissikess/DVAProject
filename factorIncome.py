@@ -137,7 +137,7 @@ def getyelpincomejson(city, state, category):
 
 
 
-def doLDA(city, state, category):
+def doAnalysis(city, state, category):
     with open('projectdata\\'+city + category + 'income.json','r') as r_file:
             data = json.load(r_file)
             keyset =set()
@@ -329,7 +329,7 @@ category = 'restaurants'
 #formatyelpjson(filename) # call only once!!
 #getyelpjsonbyparams(filename,city,state,category)
 #getyelpincomejson(city,state,category)
-doLDA(city,state,category)
+doAnalysis(city,state,category)
 
 
 
