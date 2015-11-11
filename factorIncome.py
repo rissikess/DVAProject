@@ -5,8 +5,16 @@ import re
 import csv
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 import matplotlib.pyplot as plt
 from scipy.stats.stats import pearsonr
+from operator import itemgetter
+import unicodedata
+
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier
+#import mlpy
+#from mlpy import KFDA
 #import set
 
 
@@ -129,43 +137,186 @@ def getyelpincomejson(city, state, category):
 
 
 
-def doPCA(city, state, category):
+def doAnalysis(city, state, category):
     with open('projectdata\\'+city + category + 'income.json','r') as r_file:
             data = json.load(r_file)
             keyset =set()
+            unkeyset = set()
+            unkvalueset  =set()
             newdata = []
-            for datum in data:
+            labels = []
+            maxfeats = 0
+            for dno,datum in enumerate(data):
                newdatum = {}
+               label = {}
+               featcnt = 0
                for key in datum:
-                   if isinstance(datum[key], int) or isinstance(datum[key], long) or isinstance(datum[key], float) \
-                           or isinstance(datum[key], str) or isinstance(datum[key], bool):
-                       newdatum[key] = datum[key]
-                       keyset.add(key)
-                   elif isinstance(datum[key],dict):
-                       for subkey in datum[key]:
-                           keyset.add(subkey)
-                   else:
-                       keyset.add(key)
+                   if key == "stars":
+                       #label[key] = str(datum[key])
+                       #labels.append(str(datum[key]))
+                       if datum[key] <= 2.5:
+                           labels.append("B")
+                       else:# datum[key] >= 4.0:
+                           labels.append("G")
+                       # else:
+                       #     labels.append("M")
+                   elif key!="name" and key!="business_id" and key!="full_address":
+                       if isinstance(datum[key], int) or isinstance(datum[key], long) or isinstance(datum[key], float) \
+                               or isinstance(datum[key], str) or isinstance(datum[key], bool):
+                           newdatum[key] = datum[key]
+                           keyset.add(key)
+                           featcnt+=1
+                       elif isinstance(datum[key],dict):
+                           for subkey in datum[key]:
+                               if isinstance(datum[key][subkey], int) or isinstance(datum[key][subkey], long) or \
+                                       isinstance(datum[key][subkey], float) or isinstance(datum[key][subkey], str) or \
+                                       isinstance(datum[key][subkey], bool):
+                                   newdatum[key+" "+subkey] = datum[key][subkey]
+                                   keyset.add(subkey)
+                                   featcnt+=1
+                               elif isinstance(datum[key][subkey], unicode):
+                                   ascval = unicodedata.normalize('NFKD', datum[key][subkey]).encode('ascii','ignore')
+                                   newdatum[key+" "+subkey] = ascval
+                                   keyset.add(subkey)
+                                   featcnt+=1
+                               elif isinstance(datum[key][subkey],dict):
+                                   for subsubkey in datum[key][subkey]:
+                                       if isinstance(datum[key][subkey][subsubkey], int) or \
+                                               isinstance(datum[key][subkey][subsubkey], long) or \
+                                               isinstance(datum[key][subkey][subsubkey], float) or \
+                                               isinstance(datum[key][subkey][subsubkey], str) or \
+                                               isinstance(datum[key][subkey][subsubkey], bool):
+                                           newdatum[key+" "+subkey+" "+subsubkey] = datum[key][subkey][subsubkey]
+                                           keyset.add(subsubkey)
+                                           featcnt+=1
+                                       elif isinstance(datum[key][subkey][subsubkey], unicode):
+                                           ascval = unicodedata.normalize('NFKD', datum[key][subkey][subsubkey]).encode('ascii','ignore')
+                                           newdatum[key+" "+subkey+" "+subsubkey] = ascval
+                                           keyset.add(subsubkey)
+                                           featcnt+=1
+                                       else:
+                                           unkeyset.add(key+ " "+subsubkey)
+                                           unkvalueset.add(type(datum[key][subkey][subsubkey]))
+
+                               else:
+                                   unkeyset.add(key+ " "+subkey)
+                                   unkvalueset.add(type(datum[key][subkey]))
+                       elif isinstance(datum[key],list):
+                           for itnum, item in enumerate(datum[key]):
+                               if isinstance(item, int) or isinstance(item, long) or isinstance(item, float) or \
+                                       isinstance(item, str) or isinstance(item, bool):
+                                   newdatum[key +" "+str(item)] = True
+                                   keyset.add(key)
+                                   featcnt+=1
+                               elif isinstance(item, unicode):
+                                   ascval = unicodedata.normalize('NFKD', item).encode('ascii','ignore')
+                                   newdatum[key +" "+ascval] = True
+                                   keyset.add(key)
+                                   featcnt+=1
+                               else:
+                                   unkeyset.add(key)
+                                   unkvalueset.add(type(item))
+                       else:
+                            if isinstance(datum[key], unicode):
+                                ascval = unicodedata.normalize('NFKD', datum[key]).encode('ascii','ignore')
+                                newdatum[key] = ascval
+                                keyset.add(key)
+                                featcnt+=1
+                            else:
+                                unkeyset.add(key)
+                                unkvalueset.add(type(datum[key]))
                newdata.append(newdatum)
+               if featcnt > maxfeats:
+                   maxfeats = featcnt
+               #labels.append(label)
             #print keyset
+            print unkeyset
+            print unkvalueset
+            # for unk in unkeyset:
+            #     if isinstance(unk, unicode):
+            #         print "yeah"
+            #     else:
+            #         print "nah"
             dv = DictVectorizer(sparse=False)
-            vectdata = dv.fit_transform(newdatum)
+            vectdata = dv.fit_transform(newdata)
             print vectdata[0]
-            vectpca = PCA(n_components=4)
-            vectpca.fit(vectdata)
 
-            correlation = []
-            for var in vectdata:
-                for comp in vectpca.components_:
-                    corr = pearsonr(var, comp)
-                    print corr
-                    correlation.append(corr)
+            split = (int)(round(len(vectdata)*0.7))
+            print split
+            traindata = vectdata[0:split]
+            trainlabels = labels[0:split]
+            testdata = vectdata[split:]
+            testlabels = labels[split:]
 
-            for i in range(len(correlation)):
-                print correlation[i]
+            # vectpca = PCA(n_components=4)
+            # vectpca.fit(vectdata)
 
-            print correlation[0]
-            #print correlation[1]
+            # pcacorr = []
+            # for var in vectdata:
+            #     for comp in vectpca.components_:
+            #         corr = pearsonr(var, comp)
+            #         #print corr
+            #         pcacorr.append(corr)
+
+
+             # vectlabels = dv.fit_transform(labels)
+            print "LDA"
+            vectlda = LinearDiscriminantAnalysis(n_components=10)
+            ldacomps = vectlda.fit(traindata,trainlabels).transform(traindata)
+            print "==========================="
+            print maxfeats
+
+            for jdx, coef in enumerate(vectlda.coef_):
+                print vectlda.classes_[jdx]
+                for idx,(k,v) in enumerate(sorted(dv.vocabulary_.items(),key=itemgetter(1))):
+                    print k, coef[idx]
+                print "==============="
+            ldaacc = vectlda.score(testdata,testlabels)
+            print "ldaacc ", ldaacc
+            # ldacorr = []
+            # for var in vectdata:
+            #     for comp in ldacomps:
+            #         corr = pearsonr(var, comp)
+            #         #print corr
+            #         ldacorr.append(corr)
+
+             # vectlabels = dv.fit_transform(labels)
+            print "QDA"
+            vectqda = QuadraticDiscriminantAnalysis()
+            qdacomps = vectqda.fit(traindata,trainlabels)#.transform(vectdata)
+            print "==========================="
+            print maxfeats
+            qdaacc = vectqda.score(testdata,testlabels)
+            print "qdaacc ", qdaacc
+            # for jdx, coef in enumerate(vectqda.coef_):
+            #     print vectqda.classes_[jdx]
+            #     for idx,(k,v) in enumerate(sorted(dv.vocabulary_.items(),key=itemgetter(1))):
+            #         print k, coef[idx]
+            #     print "==============="
+            # ldacorr = []
+            # for var in vectdata:
+            #     for comp in ldacomps:
+            #         corr = pearsonr(var, comp)
+            #         #print corr
+            #         ldacorr.append(corr)
+
+            rcf = RandomForestClassifier(n_estimators=200, warm_start=True,oob_score=True)
+            rcfcomps = rcf.fit(traindata,trainlabels).transform(traindata)
+            #rcfacc = rcf
+            #print "rcfacc ", rcfacc
+
+            adb = AdaBoostClassifier(n_estimators=200)
+            adcomps = adb.fit(traindata,trainlabels)#.transform(traindata)
+            adbacc = adb.score(testdata,testlabels)
+            print "adbacc ", adbacc
+            print adb.feature_importances_
+
+            gdb = GradientBoostingClassifier(n_estimators=200)
+            gdcomps = gdb.fit(traindata,trainlabels)#.transform(traindata)
+            gdbacc = gdb.score(testdata,testlabels)
+            print "gdbacc ", gdbacc
+            print gdb.feature_importances_
+
 
 
 
@@ -176,9 +327,9 @@ state = 'az'
 category = 'restaurants'
 
 #formatyelpjson(filename) # call only once!!
-getyelpjsonbyparams(filename,city,state,category)
-getyelpincomejson(city,state,category)
-doPCA(city,state,category)
+#getyelpjsonbyparams(filename,city,state,category)
+#getyelpincomejson(city,state,category)
+doAnalysis(city,state,category)
 
 
 

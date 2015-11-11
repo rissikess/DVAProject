@@ -1,0 +1,17 @@
+review topics + sentiment from top 5 reviews
+tips
+review count
+user reviewing
+============================================
+convert categorical to continuous using scikit learn preprocessing or datavectorizer
+if shapiro wilk test then
+	lda
+else
+	qda
+kda
+============================================
+mutual information based ranking
+pure correlation
+max relevance minimal redundancy
+out of bag error
+
