@@ -14,4 +14,6 @@ mutual information based ranking
 pure correlation
 max relevance minimal redundancy
 out of bag error
+consider regression instead of classification
+consider closeness of classification to estimate error
 
