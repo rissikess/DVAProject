@@ -457,6 +457,7 @@ def doAnalysis(city, state, category, k=10):
 
             ovsfimps =  sorted(zip(dv.feature_names_,ovsfeatimps),key=itemgetter(1),reverse=True)[:k]
             #print sum(ovsfimps[:][2])
+            print ovsfimps
 
 
             # #jj
