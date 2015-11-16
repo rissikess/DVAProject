@@ -1,16 +1,48 @@
 {% extends "home/base.html" %}
 
 {% block sidelist %}
+	<li>
+		<a href="javascript:;" data-toggle="collapse" data-target="#General"> General <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
+        <ul id="General" class="collapse">
+			{% for k, v in fields.General.items %}
+			    {% if v != 0 %}
+				    <li style="color: #9d9d9d;">{{ k }}: &nbsp<select>
+				    {% for val in v %}
+				        <option value="{{ val }}"> {{ val }} </option>
+				    {% endfor %}	           						
+				    </select></li>
+				{% else %}
+		        <li style="color: #9d9d9d;"><input type="checkbox" value={{ k }}> <span style="color: #9d9d9d;">{{ k }}</span></input></li>
+			    {% endif %}
+			{% endfor %}
+			<li style="color: #9d9d9d;">Zipcode: <input type="text" style="width: 60px" id="zip1"/> &nbsp to &nbsp <input type="text" style="width: 60px" id="zip2"/>
+		</ul>
+	</li>
 	{% for field, cat in fields.items %}
-		<li>
-			<a href="javascript:;" data-toggle="collapse" data-target="#{{ field.split|join:'_' }}"> {{ field }} <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
-            <ul id="{{ field.split|join:'_' }}" class="collapse">
-                {% for key in cat %}
-                    <li><input type="checkbox" value={{ key }}> <span style="color: #9d9d9d;">{{ key }} </span></input></li>
-                {% endfor %}
-            </ul>
-        </li>
+		{% if field != 'General' and field != 'Hours'%}
+			<li>
+				<a href="javascript:;" data-toggle="collapse" data-target="#{{ field.split|join:'_' }}"> {{ field }} <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
+	            <ul id="{{ field.split|join:'_' }}" class="collapse">
+	                {% for key in cat %}    
+	                	<li><input type="checkbox" value={{ key }}> <span style="color: #9d9d9d;">{{ key }} </span></input></li>
+	                {% endfor %}
+	            </ul>
+	        </li>
+	    {% endif %}
     {% endfor %}
+    <li>
+		<a href="javascript:;" data-toggle="collapse" data-target="#Hours"> Hours <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
+        <ul id="Hours" class="collapse">
+			{% for k, v in fields.Hours.items %}
+				<li style="color: #9d9d9d;">{{ k }}: &nbsp<select>
+				{% for val in v %}
+				    <option value="{{ val }}"> {{ val }} </option>
+				{% endfor %}	           						
+				</select></li>		       
+			{% endfor %}
+		</ul>
+	</li>
+
 {% endblock %}
 {% block content %}
     <div id="analysis-content">

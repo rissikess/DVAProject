@@ -407,3 +407,407 @@ Traceback (most recent call last):
   File "C:\Python34\lib\site-packages\django\template\base.py", line 639, in __init__
     "from '%s'" % (token[upto:], token))
 django.template.base.TemplateSyntaxError: Could not parse the remainder: '(' ', '_')' from 'field.replace(' ', '_')'
+[15/Nov/2015 21:17:10] WARNING [django.request:170] Not Found: /favicon.ico
+[15/Nov/2015 21:24:57] WARNING [django.request:170] Not Found: /favicon.ico
+[15/Nov/2015 22:12:29] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[15/Nov/2015 22:12:29] DEBUG [django.db.backends:89] (0.001) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[15/Nov/2015 23:50:44] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 16, in home
+    hours.extends(list(range(100, 2500, 100)))
+AttributeError: 'list' object has no attribute 'extends'
+[15/Nov/2015 23:50:55] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 16, in home
+    hours.extend(list(range(100, 2500, 100)))
+AttributeError: 'list' object has no attribute 'extends'
+[15/Nov/2015 23:50:59] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[15/Nov/2015 23:50:59] DEBUG [django.db.backends:89] (0.001) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[15/Nov/2015 23:51:02] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 17, in home
+    hours = ["0" + str(i) for i in hours if len(str(i) < 4)]
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 17, in <listcomp>
+    hours = ["0" + str(i) for i in hours if len(str(i) < 4)]
+TypeError: unorderable types: str() < int()
+[15/Nov/2015 23:51:14] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 17, in home
+    hours = ["0" + str(i) for i in hours if len(str(i)) < 4]
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 17, in <listcomp>
+    hours = ["0" + str(i) for i in hours if len(str(i)) < 4]
+TypeError: unorderable types: str() < int()
+[15/Nov/2015 23:51:17] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[15/Nov/2015 23:51:17] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[15/Nov/2015 23:51:17] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 29, in home
+    fields['hours'][day + " open"] = hours
+KeyError: 'hours'
+[15/Nov/2015 23:51:45] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 29, in home
+    fields['hours'][day + " open"] = hours
+KeyError: 'hours'
+[15/Nov/2015 23:51:48] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[15/Nov/2015 23:51:48] DEBUG [django.db.backends:89] (0.001) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[15/Nov/2015 23:51:48] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 29, in home
+    fields['hours'][day + " open"] = hours
+TypeError: 'int' object does not support item assignment
+[15/Nov/2015 23:52:16] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[15/Nov/2015 23:52:16] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[15/Nov/2015 23:52:17] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 33, in home
+    fields['General']['Price Range'] = [row[0] for row in cur.execute('SELECT DISTINCT price_range FROM yelp')]
+KeyError: 'General'
+[15/Nov/2015 23:52:43] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 33, in home
+    fields['General']['Price Range'] = [row[0] for row in cur.execute('SELECT DISTINCT price_range FROM yelp')]
+KeyError: 'General'
+[15/Nov/2015 23:52:47] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[15/Nov/2015 23:52:47] DEBUG [django.db.backends:89] (0.001) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[15/Nov/2015 23:52:49] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 39, in home
+    del fields['General']['Neighborhood']
+KeyError: 'Neighborhood'
+[15/Nov/2015 23:53:15] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[15/Nov/2015 23:53:15] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:00:41] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 53, in home
+    return render(request, "home/analysis.html", {"fields":fields})
+  File "C:\Python34\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Python34\lib\site-packages\django\template\loader.py", line 99, in render_to_string
+    return template.render(context, request)
+  File "C:\Python34\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 209, in render
+    return self._render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 161, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+[16/Nov/2015 00:01:06] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 53, in home
+    return render(request, "home/analysis.html", {"fields":fields})
+  File "C:\Python34\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Python34\lib\site-packages\django\template\loader.py", line 99, in render_to_string
+    return template.render(context, request)
+  File "C:\Python34\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 209, in render
+    return self._render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 161, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+[16/Nov/2015 00:02:25] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:02:25] DEBUG [django.db.backends:89] (0.001) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:02:30] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 54, in home
+    return render(request, "home/analysis.html", {"fields":fields})
+  File "C:\Python34\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Python34\lib\site-packages\django\template\loader.py", line 99, in render_to_string
+    return template.render(context, request)
+  File "C:\Python34\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 209, in render
+    return self._render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 161, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+[16/Nov/2015 00:02:39] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 54, in home
+    return render(request, "home/analysis.html", {"fields":fields})
+  File "C:\Python34\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Python34\lib\site-packages\django\template\loader.py", line 99, in render_to_string
+    return template.render(context, request)
+  File "C:\Python34\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 209, in render
+    return self._render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 161, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+[16/Nov/2015 00:02:56] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 54, in home
+    return render(request, "home/analysis.html", {"fields":fields})
+  File "C:\Python34\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "C:\Python34\lib\site-packages\django\template\loader.py", line 99, in render_to_string
+    return template.render(context, request)
+  File "C:\Python34\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 209, in render
+    return self._render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "C:\Python34\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "C:\Python34\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "C:\Python34\lib\site-packages\django\template\defaulttags.py", line 161, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+[16/Nov/2015 00:03:36] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:03:36] DEBUG [django.db.backends:89] (0.001) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:10:59] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:10:59] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:12:42] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:12:42] DEBUG [django.db.backends:89] (0.001) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:18:52] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:18:52] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:36:11] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:36:11] DEBUG [django.db.backends:89] (0.001) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:37:19] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 56, in home
+    fields['General'][f].sort()
+TypeError: unorderable types: int() < str()
+[16/Nov/2015 00:37:32] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:37:32] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:37:36] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 56, in home
+    fields['General'][f].sort()
+TypeError: unorderable types: int() < str()
+[16/Nov/2015 00:38:09] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:38:09] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:38:14] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 56, in home
+    fields['General'][f].sort()
+TypeError: unorderable types: int() < str()
+[16/Nov/2015 00:38:31] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:38:31] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:38:31] DEBUG [factors.views:55] Attire
+[16/Nov/2015 00:38:31] DEBUG [factors.views:55] Categories
+[16/Nov/2015 00:38:31] DEBUG [factors.views:55] Price Range
+[16/Nov/2015 00:38:31] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 57, in home
+    fields['General'][f].sort()
+TypeError: unorderable types: int() < str()
+[16/Nov/2015 00:39:19] DEBUG [factors.views:55] Attire
+[16/Nov/2015 00:39:19] DEBUG [factors.views:55] Categories
+[16/Nov/2015 00:39:19] DEBUG [factors.views:55] Price Range
+[16/Nov/2015 00:39:19] ERROR [django.request:256] Internal Server Error: /factors/home/factors/home
+Traceback (most recent call last):
+  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 57, in home
+    fields['General'][f].sort()
+TypeError: unorderable types: int() < str()
+[16/Nov/2015 00:39:22] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:39:22] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:39:59] DEBUG [factors.views:59] Price Range
+[16/Nov/2015 00:41:10] DEBUG [django.db.backends:89] (0.001) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:41:10] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:46:57] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:46:57] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[16/Nov/2015 00:46:57] DEBUG [factors.views:32] {'Tuesday open': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Friday open': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Thursday closed': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Wednesday closed': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Friday closed': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Saturday closed': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Saturday open': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Wednesday open': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Tuesday closed': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Thursday open': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Monday open': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900'], 'Monday closed': ['0000', '0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900']}
+[16/Nov/2015 00:48:28] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[16/Nov/2015 00:48:28] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
