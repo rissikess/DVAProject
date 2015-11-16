@@ -1,5 +1,17 @@
 {% extends "home/base.html" %}
 
+{% block sidelist %}
+	{% for field, cat in fields.items %}
+		<li>
+			<a href="javascript:;" data-toggle="collapse" data-target="#{{ field.split|join:'_' }}"> {{ field }} <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
+            <ul id="{{ field.split|join:'_' }}" class="collapse">
+                {% for key in cat %}
+                    <li><input type="checkbox" value={{ key }}> <span style="color: #9d9d9d;">{{ key }} </span></input></li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+{% endblock %}
 {% block content %}
     <div id="analysis-content">
         <h1>Hello world!</h1>

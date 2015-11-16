@@ -2,12 +2,13 @@ import json
 import ast
 
 import sys
-import codecs
-sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
+#import codecs
+#sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 
 input_file = open('phoenixrestaurantsage.json', 'r')
 income_file = open('phoenixrestaurantsincome.json', 'r')
 output_file = open('db_age.txt', 'w')
+cat_file = open('cat.txt', 'w')
 
 input_lines = input_file.read()
 input_lines = json.loads(input_lines)
@@ -15,7 +16,9 @@ input_lines = json.loads(input_lines)
 income_lines = income_file.read()
 income_lines = json.loads(income_lines)
 
+
 for line in input_lines:
+    print(input_lines.index(line))
     for income in income_lines:
         if(income['block_id'] == line['block_id']):
             for key in income:
@@ -24,6 +27,7 @@ for line in input_lines:
             break
 
 keyvalues = set()
+
 '''
 for key in input_lines[0]:
     if(type(input_lines[0][key]) != dict):
@@ -40,9 +44,19 @@ keyvalues = keyvalues[0:len(keyvalues)-1]
 output_file.write(keyvalues + "\n")
 '''
 
+categories = set()
+
+for line in input_lines:
+    for cat in line['categories']:
+        categories.add(cat)
+
+cat_file.write(str(categories))
+cat_file.close()
+
 linevalues = dict()
 lines = []
 
+'''
 for line in input_lines:
     linevalues = dict()
     print(input_lines.index(line))
@@ -70,13 +84,16 @@ for line in input_lines:
         lines.append(linevalues)
     except Exception as e:
         print(linevalues)
+'''
 
-for obj in lines:
+#for obj in lines:
+for obj in input_lines:
     for key in keyvalues:
         if(key not in obj):
-            obj[key] = "null"
-    output_file.write(str(obj) + "\n")
+            obj[key] = None
+    output_file.write(json.dumps(obj) + "," + "\n")
 
-output_file.write(",".join(keyvalues))
+#output_file.write(",".join(keyvalues))
+
 output_file.close()
 input_file.close()
