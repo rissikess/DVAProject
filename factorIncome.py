@@ -20,6 +20,9 @@ from sklearn.cross_validation import train_test_split, StratifiedShuffleSplit
 #from mlpy import KFDA
 #import set
 
+from sklearn.cross_validation import StratifiedKFold
+from sklearn.feature_selection import RFECV, RFE
+
 
 def inplace_change(filename, old_string, new_string):
     s=open(filename).read()
@@ -139,8 +142,52 @@ def getyelpincomejson(city, state, category):
     #    wrincfile.write(json.dumps(newcatdata))
 
 
+def evalFilter(datum, filterConditions):
 
-def doAnalysis(city, state, category, k=10):
+    for filter in filterConditions:
+        filtval = filterConditions[filter]
+
+        if isinstance(filtval, int) or isinstance(filtval, long) or isinstance(filtval, float)\
+                or isinstance(filtval, str) or isinstance(filtval, bool):
+            if datum[filter] != filtval:
+                return True
+        if isinstance(filtval, list):
+            filterCon = True
+            for fval in filtval:
+                if fval in datum[filter]:
+                    filterCon = False
+                    break
+            if filterCon:
+                return True
+        if isinstance(filtval, dict):
+            for fkey in filtval:
+                if isinstance(filtval[fkey], int) or isinstance(filtval[fkey], long) or isinstance(filtval[fkey], float)\
+                or isinstance(filtval[fkey], str) or isinstance(filtval[fkey], bool):
+                    if datum[filter][fkey] != filtval[fkey]:
+                        return True
+                if isinstance(filtval[fkey], dict):
+                    for fsubkey in filtval[fkey]:
+                        if isinstance(filtval[fkey][fsubkey], int) or isinstance(filtval[fkey][fsubkey], long) or isinstance(filtval[fkey][fsubkey], float)\
+                        or isinstance(filtval[fkey][fsubkey], str) or isinstance(filtval[fkey][fsubkey], bool):
+                            if datum[filter][fkey][fsubkey] != filtval[fkey][fsubkey]:
+                                return True
+                if isinstance(filtval[fkey], list):
+                    filterCon = True
+                    for fsubval in filtval[fkey]:
+                        if fsubval in datum[filter][fkey]:
+                            filterCon = False
+                            break
+                        if filterCon:
+                            return True
+
+    return False
+
+
+
+
+
+
+def doAnalysis(city, state, category, filterConditions, k=10):
     with open('projectdata\\'+city + category + 'income.json','r') as r_file:
             data = json.load(r_file)
             keyset =set()
@@ -153,8 +200,20 @@ def doAnalysis(city, state, category, k=10):
             labels = []
             nblabels = []
             maxfeats = 0
+            filtercondition = True
             for dno,datum in enumerate(data):
-                #if datum["stars"]>=3.0:
+               #  #filter
+               # if 'Chinese' not in datum['categories'] and 'Pizza' not in datum['categories'] and 'Italian' not in datum['categories']:
+               #     continue
+               # if 'Wi-Fi' in datum['attributes'] and datum['attributes']['Wi-Fi'] == 'no':
+               #     continue
+               # #if 'Ambience' in datum['attributes'] and 'casual' in datum['Ambience'] and datum['Ambience']['casual'] == False:
+               # #    continue
+               # if 'Price Range' in datum['attributes'] and datum['attributes']['Price Range'] != 2:
+               #     continue
+               #if datum["stars"]>=3.0:
+               if evalFilter(datum, filterConditions):
+                   continue
                newdatum = {}
                label = {}
                featcnt = 0
@@ -190,7 +249,7 @@ def doAnalysis(city, state, category, k=10):
                        #     labels.append("G")
                        else:
                            labels.append("PB")
-                   elif key!="name" and key!="business_id" and key!="full_address" and key!="latitude" and key!="longitude" and key!="hours" and key[0]!=" " and key[0]!="$" and key!='review_count':
+                   elif key!="name" and key!="business_id" and key!="full_address" and key!="latitude" and key!="longitude" and key!="hours" and key[0]!=" " and key[0]!="$" and key!='review_count' and key!='categories':
                        if isinstance(datum[key], int) or isinstance(datum[key], long) or isinstance(datum[key], float) \
                                or isinstance(datum[key], str) or isinstance(datum[key], bool):
                            newdatum[key] = datum[key]
@@ -373,13 +432,14 @@ def doAnalysis(city, state, category, k=10):
 
              # vectlabels = dv.fit_transform(labels)
 
-            ##jj
+            # #jj
             # print "LDA"
             # vectlda = LinearDiscriminantAnalysis(n_components=10)
             # ldacomps = vectlda.fit(traindata, trainlabels).transform(traindata)
             # print "==========================="
             # print maxfeats
-            #
+            # #end jj
+
 
 
             #
@@ -389,9 +449,10 @@ def doAnalysis(city, state, category, k=10):
             #         print k, coef[idx]
             #     print "==============="
 
-            ##jj
+            # #jj
             # ldaacc = vectlda.score(testdata,testlabels)
             # print "ldaacc ", ldaacc
+            # #end jj
 
             # ldacorr = []
             # for var in vectdata:
@@ -410,6 +471,7 @@ def doAnalysis(city, state, category, k=10):
             # print maxfeats
             # qdaacc = vectqda.score(testdata, testlabels)
             # print "qdaacc ", qdaacc
+            # #end jj
 
             # for jdx, coef in enumerate(vectqda.coef_):
             #     print vectqda.classes_[jdx]
@@ -434,30 +496,68 @@ def doAnalysis(city, state, category, k=10):
             # adbacc = adb.score(testdata, testlabels)
             # print "adbacc ", adbacc
             # print adb.feature_importances_
-
+            #
             # gdb = GradientBoostingClassifier(n_estimators=200)
             # gdcomps = gdb.fit(traindata,trainlabels)#.transform(traindata)
             # gdbacc = gdb.score(testdata,testlabels)
             # print "gdbacc ", gdbacc
             # print gdb.feature_importances_
+            # #end jj
 
 
             ovs = OneVsRestClassifier(RandomForestClassifier(n_estimators=200, warm_start=True, oob_score=True))
+
             ovcomps = ovs.fit(traindata, trainlabels)
             ovsacc = ovs.score(testdata, testlabels)
             print "ovsacc ", ovsacc
             ovsestimators = ovs.estimators_
             ovsfeatimps = []
             for i,ovsest in enumerate(ovsestimators):
-                print ovs.classes_[i], ovsest.feature_importances_
+                #print ovs.classes_[i], ovsest.feature_importances_
                 ovsfeatimps = ovsest.feature_importances_
             #print len(dv.feature_names_)
             #print dv.feature_names_
             #print dv.vocabulary_[' $100000 to $124999']
 
+
             ovsfimps =  sorted(zip(dv.feature_names_,ovsfeatimps),key=itemgetter(1),reverse=True)[:k]
             #print sum(ovsfimps[:][2])
             print ovsfimps
+
+
+            # rfecv = RFECV(estimator=rfc, step=100, cv=StratifiedKFold(trainlabels, 2),
+            #   scoring='accuracy')
+            # rfecv.fit(traindata, trainlabels)
+            #
+            # print("Optimal number of features : %d" % rfecv.n_features_)
+            #
+            # # Plot number of features VS. cross-validation scores
+            # plt.figure()
+            # plt.xlabel("Number of features selected")
+            # plt.ylabel("Cross validation score (nb of correct classifications)")
+            # plt.plot(range(1, len(rfecv.grid_scores_) + 1), rfecv.grid_scores_)
+            # plt.show()
+            # print rfecv.ranking_
+            rfc = RandomForestClassifier(n_estimators=200, warm_start=True, oob_score=True)
+            rfe = RFE(estimator=rfc, n_features_to_select=k,step = 0.1)
+            rfe.fit(traindata, trainlabels)
+            print rfe.n_features_
+            print len(rfe.ranking_)
+            rfetestdata = [[each_list[i] for i, supp in enumerate(rfe.support_) if supp == True ] for each_list in testdata]
+            print "rfeacc ", rfe.estimator_.score(rfetestdata, testlabels)
+            # plt.figure()
+            # plt.xlabel("Number of features selected")
+            # plt.ylabel("Cross validation score (nb of correct classifications)")
+            # plt.plot(range(1, len(rfe.scores_) + 1), rfe.scores_)
+            # plt.show()
+            rfefeatimps = []
+            rfefeatnames = [dv.feature_names_[i] for i, supp in enumerate(rfe.support_) if supp == True ]
+            impsums = sum(rfe.estimator_.feature_importances_)
+            rfeimps =  sorted(zip(rfefeatnames,rfe.estimator_.feature_importances_/impsums),key=itemgetter(1),reverse=True)
+            print rfeimps
+            print sum([pair[1] for pair in rfeimps])
+
+
 
 
             # #jj
@@ -482,6 +582,7 @@ def doAnalysis(city, state, category, k=10):
             # ovosvm.fit(traindata, trainlabels)
             # ovosvmacc = ovosvm.score(testdata, testlabels)
             # print "ovosvmacc ", ovosvmacc
+            # #end jj
 
 
             # clf = NuSVR(kernel = 'rbf',C=1.0, nu=0.5)
@@ -499,13 +600,13 @@ def doAnalysis(city, state, category, k=10):
             # nbadbacc = nbadb.score(nbtestdata, nbtestlabels)
             # print "nbadbacc ", nbadbacc
             # print nbadb.feature_importances_
-
+            #
             # gdb = GradientBoostingClassifier(n_estimators=200)
-            # gdcomps = gdb.fit(traindata,trainlabels)#.transform(traindata)
-            # gdbacc = gdb.score(testdata,testlabels)
+            # gdcomps = gdb.fit(nbtraindata,nbtrainlabels)#.transform(traindata)
+            # gdbacc = gdb.score(nbtestdata,nbtestlabels)
             # print "gdbacc ", gdbacc
             # print gdb.feature_importances_
-
+            # #end jj
 
             nbovs = OneVsRestClassifier(RandomForestClassifier(n_estimators=200, warm_start=True, oob_score=True))
             nbovcomps = nbovs.fit(nbtraindata, nbtrainlabels)
@@ -514,11 +615,24 @@ def doAnalysis(city, state, category, k=10):
             nbovsestimators = nbovs.estimators_
             nbovsfeatimps = []
             for i,nbovsest in enumerate(nbovsestimators):
-                print nbovs.classes_[i], nbovsest.feature_importances_
+               # print nbovs.classes_[i], nbovsest.feature_importances_
                 nbovsfeatimps = nbovsest.feature_importances_
             nbovsfimps =  sorted(zip(nbdv.feature_names_,nbovsfeatimps),key=itemgetter(1),reverse=True)[:k]
             print nbovsfimps
 
+            nbrfc = RandomForestClassifier(n_estimators=200, warm_start=True, oob_score=True)
+            nbrfe = RFE(estimator=nbrfc, n_features_to_select=k,step = 0.1)
+            nbrfe.fit(nbtraindata, nbtrainlabels)
+            print nbrfe.n_features_
+            print len(nbrfe.ranking_)
+            nbrfetestdata = [[each_list[i] for i, supp in enumerate(nbrfe.support_) if supp == True ] for each_list in nbtestdata]
+            print "nbrfeacc ", nbrfe.estimator_.score(nbrfetestdata, nbtestlabels)
+
+            nbrfefeatnames = [dv.feature_names_[i] for i, supp in enumerate(nbrfe.support_) if supp == True ]
+            nbimpsums = sum(nbrfe.estimator_.feature_importances_)
+            nbrfeimps =  sorted(zip(nbrfefeatnames,nbrfe.estimator_.feature_importances_/nbimpsums),key=itemgetter(1),reverse=True)
+            print nbrfeimps
+            print sum([pair[1] for pair in nbrfeimps])
 
             # #jj
             # nbovs2 = OneVsRestClassifier(AdaBoostClassifier(n_estimators=200))
@@ -541,6 +655,7 @@ def doAnalysis(city, state, category, k=10):
             # nbovosvm.fit(nbtraindata, nbtrainlabels)
             # nbovosvmacc = nbovosvm.score(nbtestdata, nbtestlabels)
             # print "nbovosvmacc ", nbovosvmacc
+            # #end jj
 
             print "===========================f================================="
 
@@ -550,13 +665,13 @@ def doAnalysis(city, state, category, k=10):
             # fadbacc = fadb.score(ftestdata, ftestlabels)
             # print "fadbacc ", fadbacc
             # print fadb.feature_importances_
-
+            #
             # gdb = GradientBoostingClassifier(n_estimators=200)
-            # gdcomps = gdb.fit(traindata,trainlabels)#.transform(traindata)
-            # gdbacc = gdb.score(testdata,testlabels)
+            # gdcomps = gdb.fit(ftraindata,ftrainlabels)#.transform(traindata)
+            # gdbacc = gdb.score(ftestdata,ftestlabels)
             # print "gdbacc ", gdbacc
             # print gdb.feature_importances_
-
+            # #end jj
 
             fovs = OneVsRestClassifier(RandomForestClassifier(n_estimators=200, warm_start=True, oob_score=True))
             fovcomps = fovs.fit(ftraindata, ftrainlabels)
@@ -565,13 +680,31 @@ def doAnalysis(city, state, category, k=10):
             fovsestimators = fovs.estimators_
             fovsfeatimps = []
             for i,fovsest in enumerate(fovsestimators):
-                print fovs.classes_[i], fovsest.feature_importances_
+                #print fovs.classes_[i], fovsest.feature_importances_
                 fovsfeatimps = fovsest.feature_importances_
-            fovsfimps =  sorted(zip(fdv.feature_names_,fovsfeatimps),key=itemgetter(1),reverse=True)[:k]
+            fovsfimps = sorted(zip(fdv.feature_names_,fovsfeatimps),key=itemgetter(1),reverse=True)[:k]
             print fovsfimps
 
+            owfile = 'output.json'
+            with open(owfile,'w') as owrfile:
+                owrfile.write(json.dumps([dict(ovsfimps), dict(nbovsfimps), dict(fovsfimps)]))
 
-            return ovsfimps, nbovsfimps, fovsfimps
+
+            frfc = RandomForestClassifier(n_estimators=200, warm_start=True, oob_score=True)
+            frfe = RFE(estimator=frfc, n_features_to_select=k,step = 0.1)
+            frfe.fit(ftraindata, ftrainlabels)
+            print frfe.n_features_
+            print len(frfe.ranking_)
+            frfetestdata = [[each_list[i] for i, supp in enumerate(frfe.support_) if supp == True ] for each_list in ftestdata]
+            print "frfeacc ", frfe.estimator_.score(frfetestdata, ftestlabels)
+
+            frfefeatnames = [dv.feature_names_[i] for i, supp in enumerate(frfe.support_) if supp == True ]
+            fimpsums = sum(frfe.estimator_.feature_importances_)
+            frfeimps =  sorted(zip(frfefeatnames,frfe.estimator_.feature_importances_/fimpsums),key=itemgetter(1),reverse=True)
+            print frfeimps
+            print sum([pair[1] for pair in frfeimps])
+
+            #
 
             # #jj
             # fovs2 = OneVsRestClassifier(AdaBoostClassifier(n_estimators=200))
@@ -594,6 +727,10 @@ def doAnalysis(city, state, category, k=10):
             # fovosvm.fit(ftraindata, ftrainlabels)
             # fovosvmacc = fovosvm.score(ftestdata, ftestlabels)
             # print "fovosvmacc ", fovosvmacc
+            # #end jj
+
+            #return ovsfimps, nbovsfimps, fovsfimps
+            return rfeimps, nbrfeimps, frfeimps
 
 #filename = 'DataVizProject\sample.txt'
 filename = 'DataVizProject\yelp_business_id_block_id_lat_long_state.txt'
@@ -605,7 +742,10 @@ category = 'restaurants'
 #getyelpjsonbyparams(filename,city,state,category)
 #getyelpincomejson(city,state,category)
 imps = []
-nbimps, gimps, aavimps = doAnalysis(city, state, category,10)
+filterConditions = {}
+#run experiments for different values of k
+nbimps, gimps, aavimps = doAnalysis(city, state, category, filterConditions, 20)
+#print nbimps, gimps, aavimps
 
 
 
