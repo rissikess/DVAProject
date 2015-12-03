@@ -1,0 +1,139 @@
+<style>
+    #chart rect{
+	  fill: #4aaeea;
+	}
+
+
+
+	.axis text{
+	  font: 15px sans-serif;
+	}
+
+	.axis path, .axis line{
+	  fill: none;
+	  stroke : #fff;
+	  shape-rendering: crispEdges;
+	}
+
+
+	.bar {
+	  fill: indigo;
+	}
+
+
+	.bar:hover {
+	  fill: brown;
+	}
+
+
+	.text { width:50%;}
+
+	text{
+		font: 15px sans-serif;
+	}
+
+
+</style>
+
+
+<script>
+
+
+	d3.json("output.json", function(error, data){
+		var margin = {top: 50, right: 20, bottom: 30, left: 250},
+		width = 1600 - margin.left - margin.right,
+		height = 1200 - margin.top - margin.bottom;
+
+	var x = d3.scale.linear()
+		.range([0, width - 500]);
+
+	var y = d3.scale.ordinal()
+		.rangeRoundBands([0, height-900], .75);
+
+	var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+	var yAxis = d3.svg.axis()
+		.scale(y)
+		.orient("left");
+		//.ticks(10, "%");
+
+	var bod = d3.select("body");
+
+
+	var svg = d3.select("body").append("svg")
+		.attr("class", "chart")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	  
+	  x.domain([0, d3.max(d3.values(data[0]))+0.01]);
+	  //alert(x.domain()[1]);
+	  y.domain(d3.keys(data[0]));
+
+		//alert(x.domain()[1]);
+	  svg.append("g")
+		  .attr("class", "x axis")
+		  .attr("transform", "translate("+ 300 + "," + 220 + ")")
+		  .style("fill","white")
+		  .style("font-size","15px")
+		  .call(xAxis)
+		  .append("text")
+		  //.attr("transform", "translate("+ 0 + "," + height-80 + ")")
+		  .attr("x", width-350)
+		  .attr("dx", ".71em")
+		  .style("text-anchor", "end")
+		  .style("fill","white")
+		  .style("font-size","15px")
+		  .style("font-weight", "bold")
+		  .text("Factor weights");
+	//alert(x.domain()[1]);
+	  svg.append("g")
+		  .attr("class", "y axis")
+		  .attr("transform", "translate("+ 300 + "," + 0 + ")")
+		  .style("fill","white")
+		  .style("font-size","25px")
+		  .call(yAxis)
+		.append("text")
+		  .attr("y", -10)
+		  .attr("x", -30)
+		  .attr("dy", ".71em")
+		  .style("text-anchor", "end")
+		  .style("fill","white")
+		  .style("font-size","15px")
+		  .style("font-weight", "bold")
+		  .text("Factors");
+	//alert(x.domain()[1]);
+	  svg.selectAll(".bar")
+		  .data(d3.entries(data[0]))
+		.enter().append("rect")
+		  .attr("class", "bar")
+		  .attr("y", function(d) { return y(d.key); })
+		  .attr("height", y.rangeBand())
+		  .attr("x", function(d) { return 300;})
+		  .attr("width", function(d) { return x(d.value); })
+		  
+		
+		svg.append("text")
+			.attr("x", (width / 2))             
+			.attr("y", 0 - (margin.top / 2))
+			.attr("text-anchor", "middle")  
+			.style("font-size", "16px") 
+			.style("text-decoration", "underline")  
+			.style("fill","White	")
+			.text("Factors v/s Weights Graph");
+	});
+
+	function type(d) {
+		d.letter = +d.letter; // coerce to number
+		return d;
+	  }
+
+  
+  
+</script>
+
+
+ 

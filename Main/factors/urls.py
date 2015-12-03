@@ -3,5 +3,5 @@ from factors import views
 
 urlpatterns = [
     url(r'home/', views.home, name='home'),
-    url(r'ratings/', views.ratings, name='ratings')
+    url(r'analysis/', views.analysis, name='analysis')
 ]

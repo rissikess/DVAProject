@@ -20,4 +20,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/$', include(admin.site.urls)),
     url(r'^factors/', include('factors.urls')),
+    url(r'^area/', include('areastats.urls')),
 ]

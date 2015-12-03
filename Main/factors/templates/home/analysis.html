@@ -1,21 +1,63 @@
 {% extends "home/base.html" %}
+{% block htmlstyles %}
+<style>
+    #chart rect{
+	  fill: #4aaeea;
+	}
+
+
+
+	.axis text{
+	  font: 15px sans-serif;
+	}
+
+	.axis path, .axis line{
+	  fill: none;
+	  stroke : #fff;
+	  shape-rendering: crispEdges;
+	}
+
+
+	.bar {
+	  fill: indigo;
+	}
+
+
+	.bar:hover {
+	  fill: brown;
+	}
+
+
+	.text { width:50%;}
+
+	.text{
+		font: 15px sans-serif;
+	}
+</style>
+{% endblock %}
 
 {% block sidelist %}
 	<li>
 		<a href="javascript:;" data-toggle="collapse" data-target="#General"> General <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
         <ul id="General" class="collapse">
+			<form>
+
 			{% for k, v in fields.General.items %}
+			<div class='row'>
 			    {% if v != 0 %}
-				    <li style="color: #9d9d9d;">{{ k }}: &nbsp<select>
-				    {% for val in v %}
-				        <option value="{{ val }}"> {{ val }} </option>
-				    {% endfor %}	           						
-				    </select></li>
-				{% else %}
-		        <li style="color: #9d9d9d;"><input type="checkbox" value={{ k }}> <span style="color: #9d9d9d;">{{ k }}</span></input></li>
+			    	<div class='col-md-6'>
+					    <li style="color: #9d9d9d;">{{ k }}: &nbsp<select id='{{ k.split|join:'_' }}' class="gen_filters" multiple="multiple">
+					</div>
+					<div class='col-md-6'>
+					    {% for val in v %}
+					        <option id='{{ val }}' value="{{ val }}"> {{ val }} </option>
+					    {% endfor %}	           						
+					    </select></li>
+					</div>
 			    {% endif %}
+			</div>
 			{% endfor %}
-			<li style="color: #9d9d9d;">Zipcode: <input type="text" style="width: 60px" id="zip1"/> &nbsp to &nbsp <input type="text" style="width: 60px" id="zip2"/>
+			</form>
 		</ul>
 	</li>
 	{% for field, cat in fields.items %}
@@ -23,9 +65,11 @@
 			<li>
 				<a href="javascript:;" data-toggle="collapse" data-target="#{{ field.split|join:'_' }}"> {{ field }} <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
 	            <ul id="{{ field.split|join:'_' }}" class="collapse">
+	            	<form>
 	                {% for key in cat %}    
-	                	<li><input type="checkbox" value={{ key }}> <span style="color: #9d9d9d;">{{ key }} </span></input></li>
+	                	<li><input type="checkbox" id='{{ key }}' value={{ key }}> <span style="color: #9d9d9d;">{{ key }} </span></input></li>
 	                {% endfor %}
+	            	</form>
 	            </ul>
 	        </li>
 	    {% endif %}
@@ -33,19 +77,223 @@
     <li>
 		<a href="javascript:;" data-toggle="collapse" data-target="#Hours"> Hours <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
         <ul id="Hours" class="collapse">
+        	<form>
 			{% for k, v in fields.Hours.items %}
-				<li style="color: #9d9d9d;">{{ k }}: &nbsp<select>
+				<li style="color: #9d9d9d;">{{ k }}: &nbsp<select id='{{ k.split|join:'_' }}' class="hour_filters">
 				{% for val in v %}
 				    <option value="{{ val }}"> {{ val }} </option>
 				{% endfor %}	           						
 				</select></li>		       
 			{% endfor %}
+			</form>
 		</ul>
 	</li>
 
 {% endblock %}
+{% block buttons %}
+	<button type="button" onclick="requestFactorData();" class="btn btn-primary" style="padding-left:20px">Get Comparison By Ratings</button>
+{% endblock %} 
 {% block content %}
     <div id="analysis-content">
-        <h1>Hello world!</h1>
+        <script>
+        	$(document).ready(function(){
+   				$(".gen_filters").multiselect();
+			});
+        </script>
     </div>    
+{% endblock %}
+
+{% block scripts %}
+    <script>
+            function requestFactorData(){
+                var selects = $('select')
+                var inputs = $('input')
+                
+                form_json = {}
+                // general
+                sel = $("#General").children("form").find(selects);
+                inp = $("#General").children("form").find(inputs);
+                form_json['general'] = {}
+                for (var el in sel){
+                    form_json['general'][(sel[el]).id] = $("#"+sel[el].id).val()
+                }
+                for(var el in inp){
+                    form_json['general'][(sel[el]).id] = $("#"+sel[el].id).val()
+                }
+
+                // hours
+                /*sel = $("#Hours").children("form").find(selects);
+                inp = $("#Hours").children("form").find(inputs);
+                form_json['hours'] = {}
+                for (var el in sel){
+                    form_json['hours'][(sel[el]).id] = $("#"+sel[el].id).val()
+                }*/
+
+                // others
+                otherfields = ['Payment_Types', 'Ambience', 'Meal_Type', 'Perks', 'Dietary_Restrictions', 'Music', 'Parking']
+                for(var field in otherfields){
+                    inp = $("#" + otherfields[field]).children("form").find(inputs);
+                    form_json[otherfields[field]] = []
+                    for (var el in inp){
+                        if(inp[el].checked){
+                            form_json[otherfields[field]].push($("#"+inp[el].id).val())
+                        }
+                    }
+                }
+                console.log(form_json)
+                new_json = {"attributes":{}}
+                for(var el in form_json){
+                	if(el == "general"){
+                		for (var x in form_json['general']){
+                			if(x == "Categories"){
+                				new_json[x.toLowerCase()] = form_json["general"]["Categories"]
+                			}
+                			else if(x == "Price_Range"){
+                				new_json["attributes"][x.replace("_"," ")] = parseInt(form_json["general"][x][0]);
+                			}
+                			else if(x!="Review_Count"){
+                				if(x && form_json["general"][x]){
+                					console.log(x);
+                					new_json[x.toLowerCase().replace("_"," ")] = form_json["general"][x][0]
+                				}
+                			}
+                		}
+                	}
+                	else{
+                		if(el != "Perks"){
+                			if(el == "Meal_Type"){
+                				el = "Good_For"
+                			}
+                			new_json["attributes"][el.replace("_"," ")] = {}
+                			for (var i in form_json[el]){
+                				if(form_json[el][i]){
+                					new_json["attributes"][el.replace("_"," ")][form_json[el][i].toLowerCase()] = true; 
+                				}
+                			}
+                		}
+                		else{
+                			for(var i in form_json[el]){
+                				if(form_json[el][i]){
+                					new_json["attributes"][form_json[el][i]] = true; 
+                				}
+                			}
+                		}
+                	}
+                }
+
+                new_json["state"] = "AZ"
+                console.log(JSON.stringify(new_json));
+                //console.log(JSON.stringify(form_json));
+
+                $.ajax('/factors/analysis/',
+                    {
+                        success: createGraph,
+                        error: errorCallback,
+                        type: 'POST',
+                        data: {"value":JSON.stringify(new_json)},
+                    }
+                )
+            }
+
+            function createGraph(data){
+                console.log(data);
+                data = JSON.parse(data);
+                data = data["obs1"]
+                	var margin = {top: 50, right: 0, bottom: 30, left: 0},
+					width = 1600 - margin.left - margin.right,
+					height = 1200 - margin.top - margin.bottom;
+
+					var x = d3.scale.linear()
+						.range([0, width - 500]);
+
+					var y = d3.scale.ordinal()
+						.rangeRoundBands([0, height-900], .75);
+
+					var xAxis = d3.svg.axis()
+						.scale(x)
+						.orient("bottom");
+
+					var yAxis = d3.svg.axis()
+						.scale(y)
+						.orient("left");
+						//.ticks(10, "%");
+
+					var bod = d3.select("#analysis-content");
+
+
+					var svg = d3.select("#analysis-content").append("svg")
+						.attr("class", "chart")
+						.attr("width", width + margin.left + margin.right)
+						.attr("height", height + margin.top + margin.bottom)
+					  .append("g")
+						.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+					  
+					  x.domain([0, d3.max(d3.values(data[0]))+0.01]);
+					  //alert(x.domain()[1]);
+					  y.domain(d3.keys(data[0]));
+
+						//alert(x.domain()[1]);
+					  svg.append("g")
+						  .attr("class", "x axis")
+						  .attr("transform", "translate("+ 300 + "," + 220 + ")")
+						  .style("fill","white")
+						  .style("font-size","15px")
+						  .call(xAxis)
+						  .append("text")
+						  //.attr("transform", "translate("+ 0 + "," + height-80 + ")")
+						  .attr("x", width-350)
+						  .attr("dx", ".71em")
+						  .style("text-anchor", "end")
+						  .style("fill","white")
+						  .style("font-size","15px")
+						  .style("font-weight", "bold")
+						  .text("Factor weights");
+					//alert(x.domain()[1]);
+					  svg.append("g")
+						  .attr("class", "y axis")
+						  .attr("transform", "translate("+ 300 + "," + 0 + ")")
+						  .style("fill","white")
+						  .style("font-size","25px")
+						  .call(yAxis)
+						.append("text")
+						  .attr("y", -10)
+						  .attr("x", -30)
+						  .attr("dy", ".71em")
+						  .style("text-anchor", "end")
+						  .style("fill","white")
+						  .style("font-size","15px")
+						  .style("font-weight", "bold")
+						  .text("Factors");
+					//alert(x.domain()[1]);
+					  svg.selectAll(".bar")
+						  .data(d3.entries(data[0]))
+						.enter().append("rect")
+						  .attr("class", "bar")
+						  .attr("y", function(d) { return y(d.key); })
+						  .attr("height", y.rangeBand())
+						  .attr("x", function(d) { return 300;})
+						  .attr("width", function(d) { return x(d.value); })
+						  
+						
+						svg.append("text")
+							.attr("x", (width / 2))             
+							.attr("y", 0 - (margin.top / 2))
+							.attr("text-anchor", "middle")  
+							.style("font-size", "16px") 
+							.style("text-decoration", "underline")  
+							.style("fill","White	")
+							.text("Factors v/s Weights Graph");
+					
+
+					function type(d) {
+						d.letter = +d.letter; // coerce to number
+						return d;
+					  }
+            }
+
+            function errorCallback(data, status, errno){
+                console.log(status);
+                console.log(errno);
+            }
+    </script>
 {% endblock %}

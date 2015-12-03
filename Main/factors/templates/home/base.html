@@ -6,14 +6,20 @@
         <!-- Include CSS -->
         <link rel="stylesheet" href="{% static 'css/bootstrap/css/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <link rel="stylesheet" href="{% static 'css/jquery.multiselect.css' %}">
+        <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
 
         <!-- Include scripts -->
+        <script type="text/javascript" src="{% static 'js/d3.v3.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-ui.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.multiselect.js' %}"></script>
         <script type="text/javascript" src="{% static 'css/bootstrap/js/bootstrap.js' %}"></script>
         <style>
             /* Side Navigation */
 
         </style>
+        {% block htmltyles %}{% endblock %}
         <title> Yelp analysis </title>
     </head>
     
@@ -28,8 +34,8 @@
                     <a href="#" class="navbar-brand">Area stats</a>
                 </ul>
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav side-nav">
+                <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidemenu">
+                    <ul class="nav navbar-nav side-nav" id="sidelist">
                         {% block sidelist %} {% endblock %}
                     </ul>
                 </div>
@@ -39,8 +45,11 @@
             <div id="page-wrapper">
                 <div class="container-fluid">
                     <!-- Page Heading -->
+                    <div class='row' style="padding-left:10px">
+                        {% block buttons %}{% endblock %}
+                    </div>
                     <div class="row">
-                        <div class="col-lg-12" id="main_container">
+                        <div class="col-lg-12" id="main_container" style="height:400px;width:300px">
                             {% block content %}{% endblock %}
                         </div>
                     </div>
@@ -48,5 +57,6 @@
                 </div>
             </div>
         </div>
+        {% block scripts %}{% endblock %}
     </body>
 </html>

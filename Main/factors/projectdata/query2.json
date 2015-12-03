@@ -1,0 +1,5634 @@
+{
+    "type": "query results",
+    "query": "select name, stars, full_address, takes_reservations, categories, wifi, touristy, casual from yelp join perks join ambience\nwhere (yelp.business_id = perks.b_id and yelp.business_id = ambience.b_id) and (categories like '%chinese%' or categories like '%italian%' or categories like '%pizza%') order by stars desc;",
+    "columns": [
+        {
+            "displayName": "name",
+            "name": "name",
+            "database": null,
+            "table": "yelp",
+            "type": "text"
+        },
+        {
+            "displayName": "stars",
+            "name": "stars",
+            "database": null,
+            "table": "yelp",
+            "type": "text"
+        },
+        {
+            "displayName": "full_address",
+            "name": "full_address",
+            "database": null,
+            "table": "yelp",
+            "type": "text"
+        },
+        {
+            "displayName": "takes_reservations",
+            "name": "takes_reservations",
+            "database": null,
+            "table": "perks",
+            "type": "text"
+        },
+        {
+            "displayName": "categories",
+            "name": "categories",
+            "database": null,
+            "table": "yelp",
+            "type": "text"
+        },
+        {
+            "displayName": "wifi",
+            "name": "wifi",
+            "database": null,
+            "table": "perks",
+            "type": "text"
+        },
+        {
+            "displayName": "touristy",
+            "name": "touristy",
+            "database": null,
+            "table": "ambience",
+            "type": "text"
+        },
+        {
+            "displayName": "casual",
+            "name": "casual",
+            "database": null,
+            "table": "ambience",
+            "type": "text"
+        }
+    ],
+    "rows": [
+        [
+            "Saffron JAK Original Stonebread Pizzas",
+            5,
+            "Phoenix, AZ 85013",
+            0,
+            "Food,Pizza,Food Trucks,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Adela's Italian",
+            5,
+            "4041 E Thomas Rd\\nSte 107\\nPhoenix, AZ 85018",
+            1,
+            "Restaurants,Italian",
+            "free",
+            0,
+            0
+        ],
+        [
+            "King Solomon's Pizza",
+            4.5,
+            "4810 N 7th St\\nPhoenix, AZ 85014",
+            0,
+            "Kosher,Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Niccoli's Deli & Pizza",
+            4.5,
+            "6102 N 16th St\\nPhoenix, AZ 85016",
+            1,
+            "Delis,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Vincent Market Bistro",
+            4.5,
+            "3930 E Camelback Rd\\nPhoenix, AZ 85018",
+            1,
+            "Breakfast & Brunch,Pizza,French,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Postino Arcadia",
+            4.5,
+            "3939 E Campbell Ave\\nPhoenix, AZ 85018",
+            1,
+            "Bars,Breakfast & Brunch,Wine Bars,Nightlife,Italian,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Tutti Santi by Nina",
+            4.5,
+            "7575 N 16th St\\nSte 5\\nPhoenix, AZ 85020",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Famous Ray's Pizza",
+            4.5,
+            "350 E Bell Rd\\nPhoenix, AZ 85022",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Spinato's Pizza",
+            4.5,
+            "1614 E Bell Rd\\nPhoenix, AZ 85022",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Roma Garden Ristorante",
+            4.5,
+            "3923 E Thunderbird Rd\\nSte 113\\nPhoenix, AZ 85032",
+            1,
+            "Restaurants,Italian",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Domino's Pizza",
+            4.5,
+            "1241 E Chandler Blvd\\nPhoenix, AZ 85048",
+            null,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Bell' Italia Pizzeria",
+            4.5,
+            "4909 E Chandler Blvd\\nSte 506\\nPhoenix, AZ 85048",
+            1,
+            "Italian,Pizza,Salad,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Florencia Pizza Bistro",
+            4.5,
+            "3646 E Ray Rd\\nSte 20\\nPhoenix, AZ 85044",
+            1,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Barro's Pizza",
+            4.5,
+            "4625 E Ray Rd\\nPhoenix, AZ 85296",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Liyuen",
+            4.5,
+            "1602 S 7th Ave\\nPhoenix, AZ 85007",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Little Caesar's Pizza",
+            4.5,
+            "1929 W Union Hills Dr\\nPhoenix, AZ 85027",
+            null,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Villa Deli",
+            4.5,
+            "15610 N 35th Ave\\nPhoenix, AZ 85053",
+            1,
+            "Food,Desserts,Delis,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Cibo",
+            4.5,
+            "603 N 5th Ave\\nPhoenix, AZ 85003",
+            1,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "La Grande Orange Pizzeria",
+            4.5,
+            "4410 N 40th St\\nPhoenix, AZ 85018",
+            0,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Pizza Patron",
+            4.5,
+            "7625 W Lower Buckeye Rd\\nPhoenix, AZ 85043",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Papa Murphys",
+            4.5,
+            "4025 E Chandler Blvd\\nSte 72\\nPhoenix, AZ 85048",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pizza a Metro",
+            4.5,
+            "2336 W Thomas Rd\\nPhoenix, AZ 85015",
+            0,
+            "Restaurants,Pizza,Salad,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Raffaele's Pizza",
+            4.5,
+            "7019 N 19th Ave\\nPhoenix, AZ 85021",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Z Pizza",
+            4.5,
+            "2815 W Peoria Ave\\nPhoenix, AZ 85029",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "That Italian Place",
+            4.5,
+            "3941 E Chandler Blvd\\nSte 107\\nPhoenix, AZ 85048",
+            1,
+            "Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Postino Central",
+            4.5,
+            "5144 N Central Ave\\nPhoenix, AZ 85012",
+            0,
+            "Bars,Breakfast & Brunch,Wine Bars,Nightlife,Italian,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pasta and Sugo",
+            4.5,
+            "2916 N 40th St\\nPhoenix, AZ 85018",
+            0,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Schlotzsky's",
+            4.5,
+            "1520 W Bell Rd\\nPhoenix, AZ 85023",
+            0,
+            "Pizza,Fast Food,Sandwiches,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Peter Piper Pizza",
+            4.5,
+            "2611 W Carefree Hwy\\nPhoenix, AZ 85085",
+            0,
+            "Pizza,Buffets,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Dragon Island Chinese Restaurant",
+            4.5,
+            "1739 W Glendale Ave\\nPhoenix, AZ 85021",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pizza People Food Truck",
+            4.5,
+            "1326 N Central Ave\\nPhoenix, AZ 85004",
+            0,
+            "Food,Pizza,Food Trucks,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Crudo",
+            4.5,
+            "3603 E Indian School Rd\\nSte B\\nPhoenix, AZ 85018",
+            1,
+            "Bars,Restaurants,American (Traditional),Nightlife,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "International House of Food",
+            4.5,
+            "902 W Van Buren St\\nPhoenix, AZ 85007",
+            1,
+            "Breakfast & Brunch,Mexican,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Rkidds Pizza & Wings",
+            4.5,
+            "3415 W Glendale Ave\\nPhoenix, AZ 85051",
+            0,
+            "Pizza,Chicken Wings,Salad,Restaurants",
+            null,
+            0,
+            1
+        ],
+        [
+            "Big Heng",
+            4.5,
+            "1739 W Glendale Ave\\nPhoenix, AZ 85021",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Lin's Golden Chinese Restaurant",
+            4.5,
+            "5037 W Thomas Rd\\nPhoenix, AZ 85035",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Snoh Ice Shavery",
+            4.5,
+            "914 E Camelback Rd\\nUnit 4B\\nPhoenix, AZ 85014",
+            0,
+            "Food,Shaved Ice,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "The Best Ever Subs and More",
+            4.5,
+            "21001 N Tatum Blvd\\nSte 84\\nPhoenix, AZ 85050",
+            0,
+            "Pizza,Sandwiches,Salad,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Hao Bao",
+            4.5,
+            "Phoenix, AZ",
+            0,
+            "Food,Chinese,Food Trucks,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "SOLO Trattoria",
+            4.5,
+            "2501 E Camelback Rd\\nSte 24\\nPhoenix, AZ 85016",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Funky Food Shack",
+            4.5,
+            "1722 W Vanburen\\nPhoenix, AZ 85007",
+            1,
+            "Pizza,Sandwiches,Salad,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Hong Kong Kitchen 3",
+            4.5,
+            "510 E Baseline Rd\\nD3\\nPhoenix, AZ 85042",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pomo Pizzeria Napoletana - Phoenix",
+            4.5,
+            "705 N First St\\nSuite 120\\nPhoenix, AZ 85004",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Caffe Daniel",
+            4.5,
+            "3115 E Lincoln Dr\\nPhoenix, AZ 85016",
+            1,
+            "Restaurants,Italian",
+            null,
+            0,
+            0
+        ],
+        [
+            "Pezzano's Pizza",
+            4.5,
+            "3130 E Union Hills Dr\\nPhoenix, AZ 85050",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "George and Sons",
+            4.5,
+            "3049 W Agua Fria Fwy\\nPhoenix, AZ 85027",
+            1,
+            "Asian Fusion,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Fired Pie",
+            4.5,
+            "Deer Valley Towne Center\\n3049 W Agua Fria Fwy\\nPhoenix, AZ 85027",
+            0,
+            "Italian,Pizza,Salad,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "My Pie",
+            4.5,
+            "12601 N Tatum Rd\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "FIRED PIE",
+            4.5,
+            "3110 N Central Ave\\nPhoenix, AZ 85012",
+            0,
+            "Italian,Pizza,Salad,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Nook",
+            4.5,
+            "3623 E Indian School Rd\\nPhoenix, AZ 85018",
+            1,
+            "Restaurants,American (New),Pizza,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Farmhouse Pizza",
+            4.5,
+            "5510 W Camelback Rd\\nPhoenix, AZ 85031",
+            1,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Papa Murphy's",
+            4.5,
+            "6825 N 16th St\\nPhoenix, AZ 85016",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Isa's Pizza",
+            4.5,
+            "4001 E Bell Rd\\nSte 112\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Sandwiches,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Super Pizza Bros.",
+            4.5,
+            "7804 N 27th Ave\\nPhoenix, AZ 85051",
+            0,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Oven and Vine",
+            4.5,
+            "14 W Vernon Ave\\nPhoenix, AZ 85003",
+            0,
+            "Bars,Restaurants,Wine Bars,Nightlife,American (New),Pizza",
+            "no",
+            0,
+            1
+        ],
+        [
+            "LaBella Pizzeria and Restaurant",
+            4.5,
+            "6505 N 7th St\\nPhoenix, AZ 85014",
+            1,
+            "Kosher,Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Fired Pie",
+            4.5,
+            "201 E Washington St\\nSte 111\\nPhoenix, AZ 85004",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "MOD Pizza",
+            4.5,
+            "3121 West Peoria Ave\\nPhoenix, AZ 85029",
+            0,
+            "Fast Food,Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pane Bianco",
+            4,
+            "4404 N Central Ave\\nPhoenix, AZ 85012",
+            1,
+            "Pizza,Italian,Sandwiches,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "China Chili",
+            4,
+            "302 E Flower St\\nPhoenix, AZ 85012",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Oregano's Pizza Bistro",
+            4,
+            "1008 E Camelback Rd\\nPhoenix, AZ 85014",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Cherryblossom Noodle Cafe",
+            4,
+            "914 E Camelback Rd\\nPhoenix, AZ 85014",
+            1,
+            "Asian Fusion,Italian,Japanese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Christo's Ristorante",
+            4,
+            "6327 N 7th St\\nPhoenix, AZ 85014",
+            1,
+            "Bars,Seafood,Wine Bars,Nightlife,Italian,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pizza Heaven Bistro",
+            4,
+            "5150 N 7th St\\nPhoenix, AZ 85014",
+            1,
+            "Italian,Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "NYPD Pizza",
+            4,
+            "1949 E Camelback Rd\\nSte 144\\nPhoenix, AZ 85016",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "L'amore",
+            4,
+            "3159 E Lincoln Dr\\nPhoenix, AZ 85016",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Avanti",
+            4,
+            "2728 E Thomas Rd\\nPhoenix, AZ 85016",
+            1,
+            "Bars,Restaurants,Nightlife,Lounges,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "China Village",
+            4,
+            "2710 E Indian School Rd\\nPhoenix, AZ 85016",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Slice of Sicily",
+            4,
+            "3724 E Indian School Rd\\nPhoenix, AZ 85018",
+            0,
+            "Food,Desserts,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Desert Jade",
+            4,
+            "3215 E Indian School Rd\\nPhoenix, AZ 85018",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "La Fontanella Restaurant",
+            4,
+            "4231 E Indian School Rd\\nPhoenix, AZ 85018",
+            1,
+            "Restaurants,Mediterranean,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Domino's Pizza",
+            4,
+            "8501 N 7th St\\nPhoenix, AZ 85020",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Spinato's Pizza",
+            4,
+            "1219 E Glendale Ave\\nSte 14\\nPhoenix, AZ 85020",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Big Daddy's Sports Lounge",
+            4,
+            "10618 N Cave Creek Rd\\nPhoenix, AZ 85020",
+            0,
+            "Nightlife,Bars,Pizza,Sports Bars,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Different Pointe of View",
+            4,
+            "11111 N 7th St\\nPhoenix, AZ 85020",
+            1,
+            "Italian,American (Traditional),Mediterranean,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Super Dragon",
+            4,
+            "1212 E Northern Ave\\nPhoenix, AZ 85020",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Stumpys Pizza",
+            4,
+            "1331 E Northern Ave\\nPhoenix, AZ 85020",
+            0,
+            "Food,Desserts,Italian,Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Peter Piper Pizza",
+            4,
+            "245 E Bell Rd\\nSte 55\\nPhoenix, AZ 85022",
+            0,
+            "Italian,Pizza,Buffets,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Salute Ristorante Italiano",
+            4,
+            "13226 N 7th St\\nPhoenix, AZ 85022",
+            1,
+            "Bars,Restaurants,Cocktail Bars,Nightlife,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Panda Express",
+            4,
+            "903 E Bell Rd\\nSte 101\\nPhoenix, AZ 85022",
+            0,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Little Caesars Pizza",
+            4,
+            "822 E Union Hls Dr\\nSte 18D\\nPhoenix, AZ 85024",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Little Peking",
+            4,
+            "10608 N 32nd St\\nPhoenix, AZ 85028",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Michelina's",
+            4,
+            "3241 E Shea Blvd\\nPhoenix, AZ 85028",
+            1,
+            "Restaurants,Italian",
+            null,
+            0,
+            0
+        ],
+        [
+            "Red Devil",
+            4,
+            "3004 E Bell Rd\\nPhoenix, AZ 85032",
+            1,
+            "Restaurants,Pizza,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Dragon Palace",
+            4,
+            "13825 N 32nd St\\nPhoenix, AZ 85032",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Fatso's Pizza",
+            4,
+            "3131 E Thunderbird Rd\\nPhoenix, AZ 85032",
+            0,
+            "Italian,Pizza,Salad,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Papa John's Pizza",
+            4,
+            "1810 W Northern Ave\\nPhoenix, AZ 85021",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Wong's Chinese Dining",
+            4,
+            "1137 E Buckeye Rd\\nPhoenix, AZ 85034",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Tam's",
+            4,
+            "1714 E Broadway Rd\\nPhoenix, AZ 85040",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Wongs To Go",
+            4,
+            "5219 S 7th St\\nPhoenix, AZ 85040",
+            null,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "China Restaurant",
+            4,
+            "4709 E Southern Avenue\\nPhoenix, AZ 85042",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Panda Garden",
+            4,
+            "4730 E Warner Rd\\nPhoenix, AZ 85044",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Ruffino Italian Cuisine",
+            4,
+            "4902 E Warner Rd\\nPhoenix, AZ 85044",
+            1,
+            "Restaurants,Italian",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Nellos Pizza",
+            4,
+            "4710 E Warner Rd\\nSte 10\\nPhoenix, AZ 85044",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Panda Express",
+            4,
+            "21001 N Tatum Blvd\\nSte 1630\\nPhoenix, AZ 85050",
+            0,
+            "Food,Desserts,Asian Fusion,Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Fiorella's",
+            4,
+            "6525 W Happy Valley Rd\\nPhoenix, AZ 85310",
+            1,
+            "Restaurants,Italian",
+            null,
+            0,
+            0
+        ],
+        [
+            "Calabria Italian Kitchen",
+            4,
+            "2605 N 7th St\\nPhoenix, AZ 85006",
+            1,
+            "Restaurants,Sandwiches,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "The Prime Chinese Restaurant",
+            4,
+            "24 W Camelback Rd\\nSte H\\nPhoenix, AZ 85013",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pino's Pizza Al Centro",
+            4,
+            "139 W Thomas Rd\\nPhoenix, AZ 85013",
+            0,
+            "Restaurants,Pizza,Salad,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Maxim Restaurant",
+            4,
+            "3424 N 19th Ave\\nPhoenix, AZ 85015",
+            0,
+            "Vietnamese,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Yin's Chinese Resturant",
+            4,
+            "1950 W Indian School Road\\nPhoenix, AZ 85015",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "My Mother's Restaurant",
+            4,
+            "4130 N 19th Ave\\nPhoenix, AZ 85015",
+            0,
+            "Food,Desserts,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Angie & Jimmie's Italian Pizza",
+            4,
+            "3126 W Indian School Rd\\nPhoenix, AZ 85017",
+            0,
+            "Italian,Pizza,Salad,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pizza Mia",
+            4,
+            "6005 N 43rd Ave\\nPhoenix, AZ 85019",
+            0,
+            "Italian,Pizza,Salad,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Streets of New York",
+            4,
+            "4229 W Bethany Home Rd\\nPhoenix, AZ 85019",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Silver Dragon Chinese Restaurant",
+            4,
+            "8946 N 19th Ave\\nPhoenix, AZ 85021",
+            null,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Panda Gourmet",
+            4,
+            "9020 N 19th Ave\\nPhoenix, AZ 85021",
+            0,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Golden Panda",
+            4,
+            "13849 N 19th Ave\\nPhoenix, AZ 85023",
+            0,
+            "Fast Food,Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Barro's Pizza",
+            4,
+            "2510 W Thunderbird Rd\\nSte 6\\nPhoenix, AZ 85023",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Luna Pizza & Restaurant",
+            4,
+            "2805 W Agua Fria Fwy\\nPhoenix, AZ 85027",
+            0,
+            "Pizza,Sandwiches,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Rosati's Pizza",
+            4,
+            "602 W Union Hills Dr\\nSte 1\\nPhoenix, AZ 85027",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Mister Wong",
+            4,
+            "10627 N 19th Ave\\nPhoenix, AZ 85029",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Anzios Italian Restaurant",
+            4,
+            "12418 N 28th Dr\\nPhoenix, AZ 85029",
+            1,
+            "Restaurants,Pizza,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Sardella's Pizza & Wings",
+            4,
+            "4212 W Cactus Rd\\nPhoenix, AZ 85029",
+            0,
+            "Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Shangri-La Chinese",
+            4,
+            "2855 W Cactus Rd\\nPhoenix, AZ 85029",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Little Dragon Chinese Restaurant",
+            4,
+            "4327 W Thomas Rd\\nPhoenix, AZ 85031",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Canton Dragon",
+            4,
+            "7307 W Indian School Rd\\nPhoenix, AZ 85033",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Lim's Chinese Restaurant",
+            4,
+            "7532 W Indian School Rd\\nPhoenix, AZ 85033",
+            0,
+            "Chinese,Food,Ethnic Food,Specialty Food,Cantonese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Grandpa's Pizza",
+            4,
+            "7333 W Thomas Road\\nPhoenix, AZ 85033",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Good China Restaurant",
+            4,
+            "6544 W Thomas Rd\\nSte 38\\nPhoenix, AZ 85033",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Happy Food",
+            4,
+            "6701 W Thomas Rd\\nPhoenix, AZ 85033",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Palermos Pizza",
+            4,
+            "9024 W Thomas Rd\\nPhoenix, AZ 85037",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Brother's Pizza",
+            4,
+            "10720 W Indian School Rd\\nPhoenix, AZ 85037",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Wong's Restaurant",
+            4,
+            "10540 W Indian School Rd\\nPhoenix, AZ 85037",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Marcia's Long Wongs",
+            4,
+            "5 W Baseline Rd\\nPhoenix, AZ 85041",
+            0,
+            "Chicken Wings,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Santisi Brothers",
+            4,
+            "2710 W Bell Rd\\nSte 1115\\nPhoenix, AZ 85053",
+            1,
+            "Nightlife,Bars,Pizza,Sports Bars,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Pizza by Napoli",
+            4,
+            "3425 W Thunderbird Rd\\nPhoenix, AZ 85053",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Abacus Inn",
+            4,
+            "3509 W Thunderbird Rd\\nPhoenix, AZ 85053",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "New Asian Kitchen",
+            4,
+            "4231 W Bell Road\\nPhoenix, AZ 85053",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pizzeria Bianco",
+            4,
+            "623 E Adams St\\nPhoenix, AZ 85004",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Chino Bandido",
+            4,
+            "15414 N 19th Ave\\nSte K\\nPhoenix, AZ 85023",
+            0,
+            "Szechuan,Asian Fusion,Mexican,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Caffe Boa Ahwatukee",
+            4,
+            "5063 E Elliot Rd\\nPhoenix, AZ 85044",
+            1,
+            "Seafood,Restaurants,American (New),Italian",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Daniel's Italian Cuisine",
+            4,
+            "4225 E Camelback Rd\\nPhoenix, AZ 85073",
+            1,
+            "Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Mamma Mia Brick Oven Pizza & Pasta",
+            4,
+            "3937 E Indian School Rd\\nPhoenix, AZ 85018",
+            0,
+            "Food,Food Delivery Services,Restaurants,Pizza,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Mu Shu Asian Grill",
+            4,
+            "1502 W Thomas Rd\\nPhoenix, AZ 85015",
+            1,
+            "Asian Fusion,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Z Pizza",
+            4,
+            "13637 N Tatum Blvd\\nPhoenix, AZ 85073",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Tomaso's",
+            4,
+            "3225 E Camelback Rd\\nPhoenix, AZ 85018",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Va Bene Italian Restaurant - Martini & Wine Bar",
+            4,
+            "4647 E Chandler Blvd\\nPhoenix, AZ 85048",
+            1,
+            "Wine Bars,Bars,Restaurants,Nightlife,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Domino's Pizza",
+            4,
+            "13843 N Tatum Blvd\\nSte 7\\nPhoenix, AZ 85032",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Barro's Pizza",
+            4,
+            "41111 N Daisy Mountain Rd\\nPhoenix, AZ 85086",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Amano Pizza Bistro",
+            4,
+            "1541 E Baseline Rd\\nPhoenix, AZ 85042",
+            1,
+            "Seafood,Restaurants,Pizza,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Market Bistro",
+            4,
+            "777 E Thunderbird Rd\\nSte 107\\nPhoenix, AZ 85022",
+            0,
+            "Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Neapolitan Wood Fired Italian",
+            4,
+            "3049 W Agua Fria Fwy\\nPhoenix, AZ 85027",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Johnnie's Chicago Style Pizza",
+            4,
+            "15443 N Cave Creek Rd\\nPhoenix, AZ 85034",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "The Wok Express",
+            4,
+            "4835 E Greenway Rd\\nPhoenix, AZ 85034",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Alexi's Grill",
+            4,
+            "3550 N Central Ave\\nPhoenix, AZ 85012",
+            1,
+            "Restaurants,Italian",
+            null,
+            0,
+            0
+        ],
+        [
+            "Papa Murphy's",
+            4,
+            "3230 E Union Hills Phoenix\\nPhoenix, AZ 85050",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Carmella's Italian Kitchen and Bar",
+            4,
+            "3230 E Thunderbird Rd\\nPhoenix, AZ 85032",
+            0,
+            "Italian,Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Times Square Pizzeria",
+            4,
+            "2602 W Deer Valley Rd\\nPhoenix, AZ 85027",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Barro's Pizza",
+            4,
+            "15440 N 7th St\\nSte 13\\nPhoenix, AZ 85022",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Aiello's",
+            4,
+            "5202 N Central Ave\\nPhoenix, AZ 85012",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Mamma Mia",
+            4,
+            "806 E Indian School Rd\\nPhoenix, AZ 85014",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "noca",
+            4,
+            "3118 E Camelback Rd\\nPhoenix, AZ 85016",
+            1,
+            "Italian,American (New),Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "China Buffet",
+            4,
+            "7710 W Lower Buckeye Rd\\nPhoenix, AZ 85043",
+            0,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Olive Garden Italian Restaurant",
+            4,
+            "2501 W Happy Valley Rd\\nPhoenix, AZ 85085",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Humble Pie",
+            4,
+            "21050 N Tatum Blvd\\nPhoenix, AZ 85050",
+            1,
+            "Italian,Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Great Wok",
+            4,
+            "3646 E Ray Rd\\nSte 12\\nPhoenix, AZ 85044",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Li's Bowl",
+            4,
+            "6260 S 35th Ave\\nPhoenix, AZ 85041",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "The Parlor",
+            4,
+            "1916 E Camelback Rd\\nPhoenix, AZ 85016",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Babbo Italian Eatery",
+            4,
+            "6855 N 16th St\\nPhoenix, AZ 85016",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Dolce Espresso Video Coffee Bar",
+            4,
+            "1025 E Camelback Rd\\nPhoenix, AZ 85014",
+            0,
+            "Coffee & Tea,Music Venues,Food,Arts & Entertainment,Nightlife,Restaurants,Italian",
+            "free",
+            null,
+            null
+        ],
+        [
+            "Meatballz",
+            4,
+            "1935 E. Camelback Rd.\\nPhoenix, AZ 85016",
+            0,
+            "Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Rochelli's Pizza House",
+            4,
+            "21043 N Cave Creek Rd\\nSte A6\\nPhoenix, AZ 85024",
+            1,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Asian Cafe",
+            4,
+            "2510 W Thunderbird Rd\\nSte 9\\nPhoenix, AZ 85023",
+            0,
+            "Fast Food,Asian Fusion,Szechuan,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Papa John's Pizza",
+            4,
+            "7040 N 16th St\\nPhoenix, AZ 85020",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Noodle & Rice",
+            4,
+            "2017 E Cactus Rd\\nSte G\\nPhoenix, AZ 85022",
+            1,
+            "Thai,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Two Hippies Pizzeria and More",
+            4,
+            "6224 N 43rd Ave\\nPhoenix, AZ 85019",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Centurion",
+            4,
+            "214 W Roosevelt St\\nPhoenix, AZ 85003",
+            1,
+            "Tapas\/Small Plates,Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Gasper's Casual Italian Dining and Pizzeria",
+            4,
+            "4117 N 16th St\\nPhoenix, AZ 85016",
+            1,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Le Ragazze",
+            4,
+            "1334 E Chandler Ave\\nSte 11\\nPhoenix, AZ 85048",
+            1,
+            "Restaurants,Italian",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Crust Pizzeria & Ristorante",
+            4,
+            "4727 E Bell Rd\\nPhoenix, AZ 85032",
+            1,
+            "Restaurants,Pizza,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Spinato's Pizzeria",
+            4,
+            "4848 E Chandler Blvd\\nPhoenix, AZ 85044",
+            0,
+            "Italian,Pizza,Restaurants",
+            "paid",
+            0,
+            1
+        ],
+        [
+            "Cave & Ives",
+            4,
+            "4247 E Indian School Rd\\nPhoenix, AZ 85018",
+            1,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "The Ol Pizzeria & Cafe",
+            4,
+            "10431 N 19th Ave\\nPhoenix, AZ 85029",
+            0,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Timo Wine Bar",
+            4,
+            "8801 N Central Ave\\nPhoenix, AZ 85020",
+            1,
+            "Tapas\/Small Plates,American (New),Pizza,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Dao Kitchen Asian Bistro",
+            4,
+            "34455 N 27 Dr\\nSte D 160-162\\nPhoenix, AZ 85085",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Yan's Chinese Food #2",
+            4,
+            "9140 W Thomas Rd\\nSte B103\\nPhoenix, AZ 85037",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "North Italia",
+            4,
+            "North Arcadia\\n4925 N 40th St\\nPhoenix, AZ 85018",
+            1,
+            "Restaurants,Pizza,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "King Wong Chinese Food",
+            4,
+            "2545 N 32nd St\\nPhoenix, AZ 85008",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Miami Cafe",
+            4,
+            "714 N Central Ave\\nPhoenix, AZ 85004",
+            null,
+            "Food,Desserts,Italian,Pizza,Restaurants",
+            "paid",
+            0,
+            0
+        ],
+        [
+            "Isa's Pizza",
+            4,
+            "777 East Thunderbird Rd\\nPhoenix, AZ 85020",
+            0,
+            "Italian,Pizza,Salad,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Sauce - Pizza & Wine",
+            4,
+            "Phoenix Sky Harbor International Airport\\n3400 E Sky Harbor Blvd\\nPhoenix, AZ 85034",
+            0,
+            "Italian,Pizza,Gluten-Free,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Sano Brick Pizza",
+            4,
+            "2170 E Baseline Rd\\nSte 134\\nPhoenix, AZ 85042",
+            0,
+            "Restaurants,Pizza,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "La Grande Orange",
+            4,
+            "Phoenix Sky Harbor International Airport\\n3400 E Sky Harbor Blvd\\nPhoenix, AZ 85034",
+            0,
+            "Food,Desserts,Italian,Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Pacific Gardens",
+            4,
+            "4747 E Elliott Rd\\nPhoenix, AZ 85044",
+            1,
+            "Sushi Bars,Asian Fusion,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Federal Pizza",
+            4,
+            "5210 N Central Ave\\nPhoenix, AZ 85012",
+            1,
+            "Italian,Pizza,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Uncle Tony's Pizza",
+            4,
+            "7830 N 19th Ave\\nPhoenix, AZ 85021",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Italian Spoon",
+            4,
+            "6505 N 7th St\\nPhoenix, AZ 85014",
+            1,
+            "Restaurants,Fish & Chips,Italian",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Dragon Chinese Restaurant",
+            4,
+            "1739 W Glendale\\nPhoenix, AZ 85021",
+            0,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Tony's Pizzeria",
+            4,
+            "7804 N 27th Ave\\nPhoenix, AZ 85051",
+            null,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Zzeek's Pizza Factory",
+            4,
+            "4825 E Warner Rd\\nPhoenix, AZ 85044",
+            1,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Celas's Pizza",
+            4,
+            "9419 N Cave Creek Rd\\nPhoenix, AZ 85020",
+            0,
+            "Pizza,Mexican,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "La Piazza PHX",
+            4,
+            "1 N 1st St\\nSte 103\\nPhoenix, AZ 85004",
+            1,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pizza People Pub",
+            4,
+            "1326 N Central Ave\\nPhoenix, AZ 85004",
+            1,
+            "American (New),Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Pittsburgh Pizza Company",
+            4,
+            "12231 N Cave Creek Rd\\nSte 120\\nPhoenix, AZ 85022",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Villa Italia Ristoranti",
+            4,
+            "1219 E Glendale Ave\\nPhoenix, AZ 85020",
+            1,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "The Clever Koi",
+            4,
+            "4236 N Central Ave\\nPhoenix, AZ 85012",
+            1,
+            "Asian Fusion,Japanese,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Giant Rustic Pizza",
+            4,
+            "3945 E Camelback Rd\\nPhoenix, AZ 85018",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            1
+        ],
+        [
+            "Pizza Studio",
+            4,
+            "11 W Washington St\\nSte 120\\nPhoenix, AZ 85003",
+            0,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Times Square",
+            4,
+            "718 E Union Hills Dr\\nPhoenix, AZ 85024",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Silver Dragon Chinese Restaurant",
+            4,
+            "1739 W Glendale Ave\\nPhoenix, AZ 85021",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Grand Avenue Pizza Company",
+            4,
+            "1031 Grand Ave\\nPhoenix, AZ 85007",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Fired Pie",
+            4,
+            "4921 E Ray Rd\\nSte 104\\nPhoenix, AZ 85044",
+            0,
+            "Pizza,Salad,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Forge Pizza",
+            4,
+            "2502 E Camelback Rd\\nSte 148\\nPhoenix, AZ 85016",
+            1,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Papa Christo's",
+            3.5,
+            "2 N Central Ave\\nPhoenix, AZ 85004",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Gourmet House of Hong Kong",
+            3.5,
+            "1438 E McDowell Rd\\nPhoenix, AZ 85006",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Red Devil",
+            3.5,
+            "3102 E McDowell Rd\\nPhoenix, AZ 85008",
+            1,
+            "Restaurants,Pizza,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Phoenix House Of Pizza And Subs",
+            3.5,
+            "326 N 48th St\\nPhoenix, AZ 85008",
+            1,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "COFCO Chinese Culture Center",
+            3.5,
+            "668 N 44th St\\nPhoenix, AZ 85008",
+            1,
+            "Shopping Centers,Shopping,Outlet Stores,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Szechwan Palace",
+            3.5,
+            "Cofco Chinese Cultural Center\\n668 N 44th St, Ste 108\\nPhoenix, AZ 85008",
+            1,
+            "Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Streets of New York",
+            3.5,
+            "214 E Camelback Rd\\nPhoenix, AZ 85012",
+            1,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Domino's Pizza",
+            3.5,
+            "914 E Camelback Rd\\nPhoenix, AZ 85014",
+            null,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Raimondo's",
+            3.5,
+            "502 W Camelback\\nPhoenix, AZ 85013",
+            null,
+            "Restaurants,Pizza,Italian",
+            null,
+            0,
+            0
+        ],
+        [
+            "Luke's of Chicago's",
+            3.5,
+            "1602 E Indian School Rd\\nPhoenix, AZ 85016",
+            0,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pizza Hut",
+            3.5,
+            "5832 16th Street\\nPhoenix, AZ 85016",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Giuseppe's On 28th",
+            3.5,
+            "2824 E Indian School Rd\\nPhoenix, AZ 85016",
+            0,
+            "Restaurants,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "California Pizza Kitchen",
+            3.5,
+            "2400 E. Camelback Rd\\nSte. 112\\nPhoenix, AZ 85016",
+            1,
+            "American (Traditional),Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "New Hong Kong",
+            3.5,
+            "2328 E Indian School Rd\\nPhoenix, AZ 85016",
+            1,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pei Wei Asian Diner",
+            3.5,
+            "4340 E Indian School Rd.\\nBldg. A Suite 23\\nPhoenix, AZ 85018",
+            0,
+            "Gluten-Free,Asian Fusion,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Little Shanghai",
+            3.5,
+            "4017 E Indian School Rd\\nPhoenix, AZ 85018",
+            1,
+            "Asian Fusion,Chinese,Restaurants",
+            null,
+            0,
+            1
+        ],
+        [
+            "Panda Express",
+            3.5,
+            "7000 N 16th St\\nSte 100\\nPhoenix, AZ 85020",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pat's Pizza Plus",
+            3.5,
+            "1135 E Glendale Ave\\nPhoenix, AZ 85020",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Streets of New York",
+            3.5,
+            "7810 N 12th St\\nPhoenix, AZ 85020",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Tony's Italian Delicatessen",
+            3.5,
+            "536 E Dunlap Ave\\nPhoenix, AZ 85020",
+            0,
+            "Delis,Italian,Sandwiches,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Bamboo China Restaurant",
+            3.5,
+            "7575 N 16th St\\nPhoenix, AZ 85020",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Flamingo Palace",
+            3.5,
+            "350 E Bell Rd\\nSte 3\\nPhoenix, AZ 85022",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Streets of New York",
+            3.5,
+            "16838 N 7th St\\nPhoenix, AZ 85022",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Bamboo House",
+            3.5,
+            "502 E Thunderbird Rd\\nPhoenix, AZ 85022",
+            0,
+            "Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "New North China",
+            3.5,
+            "12835 N Cave Creek Rd\\nPhoenix, AZ 85022",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Dragon Bowl",
+            3.5,
+            "814 E Union Hills Dr\\nSte C-14\\nPhoenix, AZ 85024",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pick Up Stix",
+            3.5,
+            "10810 N Tatum Blvd\\nPhoenix, AZ 85028",
+            0,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Uncle Sam's",
+            3.5,
+            "3217 E Shea Blvd\\nPhoenix, AZ 85028",
+            0,
+            "Burgers,Pizza,Sandwiches,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Pasta Pomodoro",
+            3.5,
+            "4669 E Cactus Rd\\nPhoenix, AZ 85032",
+            null,
+            "Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Golden Wok Chinese Restaurant",
+            3.5,
+            "4651 E Cactus Rd\\nPhoenix, AZ 85032",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Golden Bowl Chinese Food",
+            3.5,
+            "3208 E Cactus Road\\nPhoenix, AZ 85032",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Wang Express",
+            3.5,
+            "4747 E Bell Rd\\nSte 19\\nPhoenix, AZ 85032",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Canton Wong #8",
+            3.5,
+            "7050 S Central Ave\\nPhoenix, AZ 85042",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Domino's Pizza",
+            3.5,
+            "12020 S Warner Elliot Loop\\nPhoenix, AZ 85044",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Neo Tokyo",
+            3.5,
+            "4905 E Ray Rd\\nPhoenix, AZ 85044",
+            0,
+            "Thai,Asian Fusion,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Mr Chao's Asian Bistro",
+            3.5,
+            "4232 E Chandler Blvd\\nSte 4\\nPhoenix, AZ 85048",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Arrivederci",
+            3.5,
+            "4221 E Chandler Blvd\\nSte 102\\nPhoenix, AZ 85048",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Hong Kong Gourmet Buffet",
+            3.5,
+            "4909 E Chandler Blvd\\nPhoenix, AZ 85048",
+            1,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "California Pizza Kitchen",
+            3.5,
+            "21001 N. Tatum Blvd\\nSte 40-1370\\nPhoenix, AZ 85050",
+            1,
+            "American (Traditional),Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Lucky's Pizza",
+            3.5,
+            "3130 E Union Hills Dr\\nPhoenix, AZ 85050",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Ray's Pizza",
+            3.5,
+            "3414 W Union Hills Dr\\nSte 5\\nPhoenix, AZ 85027",
+            0,
+            "Restaurants,Pizza,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Barro's Pizza",
+            3.5,
+            "18425 N 51 Ave\\nPhoenix, AZ 85308",
+            0,
+            "Italian,Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Golden Moon Palace Restaurant",
+            3.5,
+            "1408 W Van Buren St\\nPhoenix, AZ 85007",
+            null,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Little Caesars Pizza",
+            3.5,
+            "1615 W Camelback Rd\\nSte 108\\nPhoenix, AZ 85015",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Great Wall Cuisine",
+            3.5,
+            "5057 N 35th Ave\\nPhoenix, AZ 85017",
+            1,
+            "Dim Sum,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Sardella's Pizza & Wings",
+            3.5,
+            "18631 N 19th Ave\\nPhoenix, AZ 85027",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "May Garden Restaurant",
+            3.5,
+            "5814 W Indian School Rd\\nPhoenix, AZ 85031",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Golden Nugget Chinese Buffet",
+            3.5,
+            "4955 W Indian School Rd\\nPhoenix, AZ 85031",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Presto Pizza & Wings",
+            3.5,
+            "5127 W Indian School Rd\\nPhoenix, AZ 85031",
+            null,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Rice To You",
+            3.5,
+            "5132 W McDowell Rd\\nPhoenix, AZ 85035",
+            0,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Star Wok",
+            3.5,
+            "2201 N 83rd Avenue\\nPhoenix, AZ 85035",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Chuck E Cheese's Pizza",
+            3.5,
+            "8039 N 35th Ave\\nPhoenix, AZ 85051",
+            1,
+            "Pizza,Restaurants",
+            "free",
+            null,
+            null
+        ],
+        [
+            "Chen & Wok",
+            3.5,
+            "3431 W Thunderbird Rd\\nPhoenix, AZ 85053",
+            0,
+            "Thai,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pong Pong",
+            3.5,
+            "3332 W Bell Road\\nPhoenix, AZ 85053",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Peter Piper Pizza",
+            3.5,
+            "3403 N 7th Ave\\nPhoenix, AZ 85013",
+            1,
+            "Pizza,Buffets,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Taiwan Express",
+            3.5,
+            "668 N 44th St\\n# 66A\\nPhoenix, AZ 85008",
+            null,
+            "Delis,Fast Food,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Sauce Pizza & WIne",
+            3.5,
+            "742 E Glendale Ave\\nPhoenix, AZ 85020",
+            0,
+            "Nightlife,Italian,Pizza,Bars,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Slices",
+            3.5,
+            "21001 N Tatum Blvd\\nPhoenix, AZ 85050",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Harley's Italian Bistro",
+            3.5,
+            "4221 N 7th Ave\\nPhoenix, AZ 85013",
+            1,
+            "Restaurants,Pizza,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Siu Wok",
+            3.5,
+            "3815 N Central Ave\\nSte A\\nPhoenix, AZ 85012",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Sun Asian Kitchen",
+            3.5,
+            "2070 E Baseline Rd\\nSte D112\\nPhoenix, AZ 85073",
+            1,
+            "Sushi Bars,Asian Fusion,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Wahsun Chinese Restaurant",
+            3.5,
+            "8056 N 19th Ave\\nPhoenix, AZ 85021",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Peter Piper Pizza",
+            3.5,
+            "4024 N 67th Ave\\nPhoenix, AZ 85033",
+            1,
+            "Pizza,Buffets,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Nick's",
+            3.5,
+            "10810 N Tatum Blvd\\nPhoenix, AZ 85028",
+            1,
+            "Restaurants,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Barro's Pizza",
+            3.5,
+            "3233 E Chandler Blvd\\nPhoenix, AZ 85048",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pei Wei Asian Diner",
+            3.5,
+            "267 E Bell Rd.\\nSuite 1\\nPhoenix, AZ 85022",
+            0,
+            "Gluten-Free,Asian Fusion,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Ray's Pizza",
+            3.5,
+            "3134 W Carefree Hwy\\nPhoenix, AZ 85086",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Hungry Howies",
+            3.5,
+            "4625 E Thomas Rd\\nPhoenix, AZ 85018",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Domino's Pizza",
+            3.5,
+            "10411 N 35th Ave\\nPhoenix, AZ 85051",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Nee House Chinese Restaurant",
+            3.5,
+            "13843 N Tatum Blvd\\nSte 15\\nPhoenix, AZ 85032",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "zpizza",
+            3.5,
+            "53 W Thomas Rd\\nPhoenix, AZ 85013",
+            0,
+            "Gluten-Free,Pizza,Vegan,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Little Caesar's",
+            3.5,
+            "2950 N 32nd St\\nPhoenix, AZ 85018",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Rays Pizza",
+            3.5,
+            "2501 W Happy Valley Rd\\nPhoenix, AZ 85085",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Papa John's Pizza",
+            3.5,
+            "4302 E Ray Rd\\nSte 113\\nPhoenix, AZ 85044",
+            null,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Domino's Pizza",
+            3.5,
+            "3329 E Bell Rd\\nPhoenix, AZ 85032",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Cardinal Pizza",
+            3.5,
+            "9226 N 7th Street\\nPhoenix, AZ 85020",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Barro's Pizza",
+            3.5,
+            "4030 E Greenway Rd\\nPhoenix, AZ 85032",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "My Big Fat Greek Restaurant",
+            3.5,
+            "400 E Van Buren St\\nPhoenix, AZ 85004",
+            1,
+            "Greek,Pizza,Mediterranean,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "China Chan Restaurant",
+            3.5,
+            "10227 N Metro Pkwy E\\nPhoenix, AZ 85051",
+            0,
+            "Buffets,Dim Sum,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "BJ's Restaurant & Brewhouse",
+            3.5,
+            "21001 North Tatum Blvd.\\nPhoenix, AZ 85050",
+            1,
+            "Food,Breweries,American (New),Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Red Tomato",
+            3.5,
+            "4801 E Indian School Rd\\nPhoenix, AZ 85018",
+            1,
+            "Burgers,Restaurants,Pizza,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Valley Pizza Downtown",
+            3.5,
+            "1348 W Roosevelt St\\nPhoenix, AZ 85007",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Focaccia Fiorentina",
+            3.5,
+            "112 N Central Ave\\nPhoenix, AZ 85004",
+            0,
+            "Event Planning & Services,Restaurants,Caterers,Pizza,Italian",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Cafepino",
+            3.5,
+            "7000 E Mayo Blvd\\nPhoenix, AZ 85054",
+            1,
+            "Restaurants,Pizza,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Belfiore's Italian Ristorante",
+            3.5,
+            "15842 N Cave Creek Rd\\nPhoenix, AZ 85032",
+            1,
+            "Bakeries,Food,Restaurants,Pizza,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "La Piccola Cucina",
+            3.5,
+            "2241 N 7th St\\nPhoenix, AZ 85006",
+            0,
+            "Restaurants,Mediterranean,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Il Posto",
+            3.5,
+            "9832 N 7th St\\nPhoenix, AZ 85020",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Sauce",
+            3.5,
+            "2470 W Happy Valley Rd\\nPhoenix, AZ 85085",
+            0,
+            "Restaurants,Pizza,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "P.F. Chang's",
+            3.5,
+            "2420 W Happy Valley Rd.\\nPhoenix, AZ 85085",
+            1,
+            "Gluten-Free,Asian Fusion,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Golden China",
+            3.5,
+            "10720 W Indian School Rd\\nPhoenix, AZ 85037",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Hob Nobs Cafe & Spirits",
+            3.5,
+            "149 W McDowell Rd\\nPhoenix, AZ 85003",
+            1,
+            "Food,Coffee & Tea,Pizza,Sandwiches,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "zpizza",
+            3.5,
+            "111 W Monroe St\\nSte 130\\nPhoenix, AZ 85003",
+            0,
+            "Gluten-Free,Pizza,Vegan,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Hanny's",
+            3.5,
+            "40 N 1st St\\nPhoenix, AZ 85004",
+            1,
+            "Bars,Pizza,Nightlife,Lounges,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Cafe Roma",
+            3.5,
+            "110 N. Central Ave\\nPhoenix, AZ 85004",
+            null,
+            "Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "PastaBAR",
+            3.5,
+            "705 N 1st St\\nPhoenix, AZ 85004",
+            1,
+            "Food,Ice Cream & Frozen Yogurt,Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "DiVito's Pizzeria And Italian Restaurant",
+            3.5,
+            "5134 E Thomas Rd\\nPhoenix, AZ 85018",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Picazzo's Organic Italian Kitchen",
+            3.5,
+            "4669 E. Cactus\\nPhoenix, AZ 85032",
+            1,
+            "Italian,Pizza,Gluten-Free,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "CiCi's Pizza",
+            3.5,
+            "2270 N 75th Ave\\nPhoenix, AZ 85035",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Vincent's",
+            3.5,
+            "4905 E Ray Rd\\nSte 104\\nPhoenix, AZ 85044",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pizza Italia",
+            3.5,
+            "4727 E Bell Rd\\nSte 59\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Tommy V's Osteria and Pizzeria",
+            3.5,
+            "3225 E Camelback Rd\\nPhoenix, AZ 85018",
+            1,
+            "Restaurants,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Brad's Place",
+            3.5,
+            "4747 E Elliot Rd\\nPhoenix, AZ 85044",
+            0,
+            "Bars,Italian,Restaurants,Sports Bars,Nightlife",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Mellow Mushroom",
+            3.5,
+            "2490 W Happy Valley Rd\\nPhoenix, AZ 85085",
+            0,
+            "Vegetarian,Pizza,Vegan,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Ninja Bowl",
+            3.5,
+            "2040 W Deer Valley Rd\\nSte A\\nPhoenix, AZ 85027",
+            0,
+            "Food,Donuts,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pizza Hut",
+            3.5,
+            "3145 E Chandler Blvd\\nPhoenix, AZ 85048",
+            0,
+            "Chicken Wings,Restaurants,Pizza,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "NYPD Pizza",
+            3.5,
+            "556 W McDowell Rd\\nPhoenix, AZ 85003",
+            0,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Streets of New York",
+            3.5,
+            "2805 West Carefree Highway\\nPhoenix, AZ 85086",
+            1,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Little Caesars",
+            3.5,
+            "3961 E Chandler Blvd\\nPhoenix, AZ 85048",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Panda Express",
+            3.5,
+            "4025 E Chandler Blvd\\nPhoenix, AZ 85048",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "A Slice of Bella",
+            3.5,
+            "4825 E Warner Rd\\nPhoenix, AZ 85044",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Hsin Cafe",
+            3.5,
+            "120 E Taylor St\\nSte 150\\nPhoenix, AZ 85004",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Red Dragon Chinese and Mexican Food",
+            3.5,
+            "1520 W Indian School Road\\nPhoenix, AZ 85015",
+            0,
+            "Buffets,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Picazzo's Organic Italian Kitchen",
+            3.5,
+            "Camelback Esplanade\\n2525 E Camelback Rd\\nPhoenix, AZ 85016",
+            null,
+            "Italian,Pizza,Gluten-Free,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Our Family's Bistro",
+            3.5,
+            "9032 S Central Ave\\nPhoenix, AZ 85042",
+            1,
+            "Restaurants,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Yu's Cafe",
+            3.5,
+            "1920 W Thunderbird Rd\\nPhoenix, AZ 85023",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Spasso Pizza & Mozzarella Bar",
+            3.5,
+            "4743 N 20th St\\nSte A22A\\nPhoenix, AZ 85016",
+            1,
+            "Restaurants,Pizza,Italian",
+            null,
+            0,
+            0
+        ],
+        [
+            "Brick",
+            3.5,
+            "The Arizona Ctr\\n455 N 3rd St\\nPhoenix, AZ 85004",
+            1,
+            "Pizza,American (New),Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Streets of New York",
+            3.5,
+            "5031 N 44th St\\nPhoenix, AZ 85018",
+            1,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Hibachi Grill & Supreme Buffet",
+            3.5,
+            "2929 N 75th Ave\\nPhoenix, AZ 85033",
+            1,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Cleopatra Bistro Pizza",
+            3.5,
+            "7804 N 27th Ave\\nPhoenix, AZ 85051",
+            0,
+            "Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Upper Crust Pizza",
+            3.5,
+            "20235 N Cave Creek Rd\\nSte 111\\nPhoenix, AZ 85024",
+            1,
+            "Bars,Restaurants,Nightlife,Pizza,Sports Bars,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Hibachi Grill & Supreme Buffet",
+            3.5,
+            "10030 N Metro Pkwy E\\nPhoenix, AZ 85051",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Domino's Pizza",
+            3.5,
+            "7606 W Indian School Rd\\nPhoenix, AZ 85033",
+            null,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Aiello's Salumeria",
+            3.5,
+            "777 E Thunderbird Rd\\nPhoenix, AZ 85020",
+            0,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Naked Pizza",
+            3.5,
+            "4747 E Elliot Rd\\nPhoenix, AZ 85044",
+            0,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Iron Chef",
+            3.5,
+            "10810 N Tatum Blvd\\nSte 106\\nPhoenix, AZ 85028",
+            1,
+            "Sushi Bars,Japanese,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Oregano's Pizza Bistro",
+            3.5,
+            "4602 E Cactus Rd\\nPhoenix, AZ 85032",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "New King Wah Chinese Buffet",
+            3.5,
+            "220 E Southern Ave\\nPhoenix, AZ 85040",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Humble Pie",
+            3.5,
+            "2333 N 7th St\\nPhoenix, AZ 85006",
+            0,
+            "Italian,Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Tony Pizzeria Italian Restaurant",
+            3.5,
+            "1546 W Bell Rd\\nPhoenix, AZ 85023",
+            null,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "The Strand",
+            3.5,
+            "2 E Jefferson St\\nSte 113\\nPhoenix, AZ 85004",
+            1,
+            "Restaurants,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Pizzeria Bianco",
+            3.5,
+            "4743 N 20th St\\nPhoenix, AZ 85016",
+            1,
+            "Restaurants,Pizza,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Panda Express",
+            3.5,
+            "998 E Indian School Rd\\nPhoenix, AZ 85014",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Mellow Mushroom",
+            3.5,
+            "5350 E High St\\nSte 115\\nPhoenix, AZ 85054",
+            1,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Barro's Pizza",
+            3.5,
+            "4625 E Ray Rd\\nPhoenix, AZ 85044",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "New York Pizza Dept.",
+            3.5,
+            "3800 E Sky Harbor Blvd\\nPhoenix, AZ 85034",
+            0,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Hong Kong Chinese Cuisine",
+            3.5,
+            "1920 W Thunderbird Rd\\nPhoenix, AZ 85023",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Trattoria Bianco",
+            3.5,
+            "4743 N 20th St\\nPhoenix, AZ 85016",
+            1,
+            "Restaurants,Italian",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Jimmy & Joe's Pizzeria",
+            3.5,
+            "4747 E Elliot Rd\\nPhoenix, AZ 85044",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Gretalian",
+            3.5,
+            "5341 N 7th Ave\\nPhoenix, AZ 85013",
+            1,
+            "Greek,Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Spinato's Pizza",
+            3.5,
+            "5509 N 7th St\\nPhoenix, AZ 85014",
+            1,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "La Bocca Wine Bar & Urban Kitchen",
+            3.5,
+            "5415 E High St\\nSte 127\\nPhoenix, AZ 85054",
+            1,
+            "Bars,Mediterranean,Wine Bars,Nightlife,Italian,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Momenti",
+            3.5,
+            "4740 E Shea Blvd\\nPhoenix, AZ 85028",
+            0,
+            "Italian,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Times Square Neighborhood Italian Restaurant",
+            3.5,
+            "718 E Union Hills Dr\\nPhoenix, AZ 85024",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Papa Murphy's",
+            3.5,
+            "3320 W Bethany Home Rd\\nPhoenix, AZ 85017",
+            null,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Good Taste House",
+            3.5,
+            "8510 N. 7th St\\nPhoenix, AZ 85020",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Domino's Pizza",
+            3,
+            "2819 N Central Ave\\nPhoenix, AZ 85004",
+            1,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Fate 905",
+            3,
+            "905 N 4th St\\nPhoenix, AZ 85004",
+            1,
+            "Asian Fusion,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "The Old Spaghetti Factory",
+            3,
+            "1418 N Central Ave\\nPhoenix, AZ 85004",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Lao Ching Hing",
+            3,
+            "Cofco Chinese Cultural Ctr\\n668 N 44th St\\nPhoenix, AZ 85008",
+            1,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Manhattan Pizzeria and Subshop",
+            3,
+            "5224 N 7th St\\nPhoenix, AZ 85014",
+            0,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Imperial Garden Chinese Buffett",
+            3,
+            "1575 E Camelback Rd\\nPhoenix, AZ 85014",
+            null,
+            "Buffets,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Long Wong's Restaurant",
+            3,
+            "2812 E Thomas Rd\\nPhoenix, AZ 85016",
+            0,
+            "American (Traditional),Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Frank's Pizza & Wings",
+            3,
+            "3168 E Indian School Rd\\nPhoenix, AZ 85016",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pei Wei Asian Diner",
+            3,
+            "742 E Glendale\\nSuite 110\\nPhoenix, AZ 85020",
+            0,
+            "Gluten-Free,Asian Fusion,Chinese,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "China Super Buffet",
+            3,
+            "8801 N 7th St\\nPhoenix, AZ 85020",
+            0,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Joey's California Bistro",
+            3,
+            "610 E Bell Rd\\nPhoenix, AZ 85022",
+            1,
+            "Restaurants,Italian",
+            "paid",
+            0,
+            1
+        ],
+        [
+            "Domino's Pizza",
+            3,
+            "751 E Union Hills Dr\\nSte A-1\\nPhoenix, AZ 85024",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Panda Express",
+            3,
+            "10637 N Tatum Blvd\\nPhoenix, AZ 85028",
+            null,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "A A Wok",
+            3,
+            "3202 E Greenway Rd\\nSte 1289\\nPhoenix, AZ 85032",
+            null,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Sardellas Pizza and Wings",
+            3,
+            "3143 E Greenway Rd\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Streets of New York",
+            3,
+            "3120 E Cactus Road\\nPhoenix, AZ 85032",
+            1,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Lim's Chinese Buffet",
+            3,
+            "2412 E Greenway Rd\\nPhoenix, AZ 85032",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Domino's Pizza",
+            3,
+            "324 E Southern Ave\\nPhoenix, AZ 85040",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Abacus Inn Chinese Restaurant",
+            3,
+            "4747 E Elliot Rd\\nSte 6\\nPhoenix, AZ 85044",
+            1,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Chuck E Cheese's Pizza",
+            3,
+            "4825 E Warner Rd\\nPhoenix, AZ 85044",
+            1,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Romano's Macaroni Grill",
+            3,
+            "5035 E Ray Rd\\nPhoenix, AZ 85044",
+            1,
+            "Restaurants,Italian",
+            null,
+            0,
+            0
+        ],
+        [
+            "Rosati's Pizza",
+            3,
+            "4206 E Chandler Blvd\\nSte 34\\nPhoenix, AZ 85048",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Peter Piper Pizza",
+            3,
+            "4716 E Thunderbird Rd\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Park Central Deli",
+            3,
+            "3110 N Central Ave\\nSte 175\\nPhoenix, AZ 85012",
+            0,
+            "Burgers,Delis,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Garden Express",
+            3,
+            "1825 W Buckeye Rd\\nPhoenix, AZ 85007",
+            null,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pizza Hut",
+            3,
+            "1520 N 43rd Ave\\nPhoenix, AZ 85009",
+            null,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Diamond's Chinese Restaurant",
+            3,
+            "4402 N 7th Ave\\nPhoenix, AZ 85013",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Kwan & Wok Chinese Restaurant",
+            3,
+            "1702 W Camelback Rd\\nPhoenix, AZ 85015",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Shanghai Express",
+            3,
+            "3302 W Thomas Rd\\nPhoenix, AZ 85017",
+            0,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Chen Wok Express",
+            3,
+            "8115 N 19th Ave\\nPhoenix, AZ 85021",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "China Garden Restaurant",
+            3,
+            "17201 N 19th Ave\\nPhoenix, AZ 85023",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Oriental Express",
+            3,
+            "18631 N 19th Avenue\\nSuite 150\\nPhoenix, AZ 85027",
+            0,
+            "Sushi Bars,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Bamboo Grille",
+            3,
+            "3049 W Agua Fria Fwy\\nSte B-3\\nPhoenix, AZ 85027",
+            1,
+            "Japanese,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Panda Express",
+            3,
+            "3013 W Agua Fria Fwy\\nSte 4\\nPhoenix, AZ 85027",
+            0,
+            "Chinese,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Pink Lotus Express",
+            3,
+            "18635 N 35th Ave\\nPhoenix, AZ 85027",
+            0,
+            "Seafood,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Ming's Pagoda",
+            3,
+            "12019 N 19th Ave\\nPhoenix, AZ 85029",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "China Harvest Buffet",
+            3,
+            "12407 N 28th Dr\\nPhoenix, AZ 85029",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Pizza Hut",
+            3,
+            "13624 N. 35th Avenue\\nPhoenix, AZ 85029",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Panda Express",
+            3,
+            "7510 W Thomas Rd\\nPhoenix, AZ 85033",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Olive Garden Italian Restaurant",
+            3,
+            "2626 N 75th Ave\\nPhoenix, AZ 85035",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Great Wall Buffet Two Corporation",
+            3,
+            "8101 N 35th Ave\\nPhoenix, AZ 85051",
+            1,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Il Primo Pizza & Wings",
+            3,
+            "6135 N 35th Ave\\nPhoenix, AZ 85017",
+            1,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Peter Piper Pizza",
+            3,
+            "9620 N Metro Pkwy W\\nSte 130\\nPhoenix, AZ 85051",
+            0,
+            "Pizza,Buffets,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Olive Garden Italian Restaurant",
+            3,
+            "10223 N Metro Parkway E\\nPhoenix, AZ 85051",
+            1,
+            "Restaurants,Italian",
+            null,
+            0,
+            1
+        ],
+        [
+            "Ray's Pizza II",
+            3,
+            "515 E Carefree Hwy\\nPhoenix, AZ 85085",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Golden Phoenix Chinese Restaurant",
+            3,
+            "6048 N 16th St\\nPhoenix, AZ 85016",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Golden Buddha",
+            3,
+            "668 N 44th St\\nPhoenix, AZ 85008",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Cafe La Bella",
+            3,
+            "2605 N 7th St\\nPhoenix, AZ 85006",
+            null,
+            "Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Corleone's",
+            3,
+            "1640 E Camelback Rd\\nPhoenix, AZ 85016",
+            0,
+            "Cheesesteaks,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Autumn Court Chinese Restaurant",
+            3,
+            "3752 E Indian School Rd\\nPhoenix, AZ 85018",
+            1,
+            "Sushi Bars,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Chen & Wok",
+            3,
+            "6505 N 7th St\\nPhoenix, AZ 85014",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Jerry Tucci's Brick Oven Pizzeria",
+            3,
+            "4602 E Cactus Rd\\nPhoenix, AZ 85032",
+            0,
+            "Event Planning & Services,Restaurants,Caterers,Pizza,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Papa John's Pizza",
+            3,
+            "751 E Bell Rd.\\nSte 10\\nPhoenix, AZ 85022",
+            0,
+            "Pizza,Restaurants",
+            "paid",
+            0,
+            1
+        ],
+        [
+            "Cafe Roma",
+            3,
+            "Arizona Ctr Mall\\n455 N 3rd St\\nPhoenix, AZ 85004",
+            0,
+            "Restaurants,Pizza,Italian",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Peter Piper Pizza",
+            3,
+            "4105 N 51St Ave\\nSte 111\\nPhoenix, AZ 85031",
+            1,
+            "Pizza,Buffets,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Pei Wok",
+            3,
+            "3233 E Chandler Blvd\\nSte 6\\nPhoenix, AZ 85048",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pizza Patron",
+            3,
+            "1640 N 36th St\\nPhoenix, AZ 85008",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Panda Express",
+            3,
+            "2434 E Baseline Road\\nPhoenix, AZ 85042",
+            0,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Asia Lee Chinese Restaurant",
+            3,
+            "5030 E McDowell Rd\\nPhoenix, AZ 85008",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Rosati's on Arcadia",
+            3,
+            "4041 E Thomas Rd\\nSte 110\\nPhoenix, AZ 85018",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Domino's Pizza",
+            3,
+            "3510 W Bell Rd\\nSte 9\\nPhoenix, AZ 85053",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Il Primo Pizza & Wings",
+            3,
+            "16880 N Cave Creek Rd\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Peter Wong Chinese Restaurant",
+            3,
+            "1534 W Camelback Rd\\nPhoenix, AZ 85015",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Rosati's Pizza",
+            3,
+            "2320 E Baseline Rd\\nPhoenix, AZ 85042",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Palermos Pizza",
+            3,
+            "2620 S 83rd Ave\\nPhoenix, AZ 85043",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pei Wei",
+            3,
+            "701 W McDowell Rd\\nPhoenix, AZ 85003",
+            0,
+            "Gluten-Free,Asian Fusion,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Ristorante Tuscany",
+            3,
+            "JW Marriott Desert Ridge Resort\\n5350 E Marriott Dr\\nPhoenix, AZ 85054",
+            1,
+            "Restaurants,Italian",
+            null,
+            0,
+            0
+        ],
+        [
+            "Hong Kong Express",
+            3,
+            "668 N 44th St\\nPhoenix, AZ 85008",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "That's Italiano",
+            3,
+            "3717 E Indian School Rd\\nPhoenix, AZ 85018",
+            1,
+            "Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Carmine's Little Italy Pizza & Pasta",
+            3,
+            "3 S 2nd St\\nSte 111\\nPhoenix, AZ 85004",
+            0,
+            "Italian,Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Amante Pizza and Pasta",
+            3,
+            "3345 W Greenway Rd\\nPhoenix, AZ 85073",
+            1,
+            "Restaurants,Pizza,Italian",
+            null,
+            0,
+            0
+        ],
+        [
+            "CiCi's Pizza",
+            3,
+            "3911 E Thomas Rd\\nSte F5\\nPhoenix, AZ 85018",
+            0,
+            "Pizza,Buffets,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Happy Food",
+            3,
+            "3 W Baseline Rd\\nPhoenix, AZ 85041",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "China Star Super Buffet",
+            3,
+            "3507 W Dunlap Ave\\nPhoenix, AZ 85073",
+            1,
+            "Buffets,Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Chop Chop Chinese Kitchen",
+            3,
+            "2450 W Happy Valley Rd\\nSte 1155\\nPhoenix, AZ 85027",
+            0,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pan Asia Sushi Chinese Fusion",
+            3,
+            "2485 E Baseline Rd\\nSte 157\\nPhoenix, AZ 85042",
+            1,
+            "Sushi Bars,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Streets of New York",
+            3,
+            "1985 W Happy Valley Rd\\nSte A\\nPhoenix, AZ 85085",
+            1,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Red Brick Pizza",
+            3,
+            "2170 E Baseline Rd\\nSte 134\\nPhoenix, AZ 85042",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Rosati's Pizza",
+            3,
+            "4010 E Bell Rd\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Affinito's Bistro",
+            3,
+            "3655 W Anthem Way\\nSte C-137\\nPhoenix, AZ 85086",
+            1,
+            "Restaurants,Italian",
+            null,
+            0,
+            0
+        ],
+        [
+            "Sam's Chicago Style Pizza & Wings",
+            3,
+            "4330 W Union Hills\\nPhoenix, AZ 85050",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Panda Express",
+            3,
+            "4750 S 48th St\\nSte 121\\nPhoenix, AZ 85040",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Streets of New York",
+            3,
+            "4757 E Greenway Rd\\nPhoenix, AZ 85032",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            null,
+            0,
+            1
+        ],
+        [
+            "Two Hippies Dropped Out of College and Opened a Pizzeria",
+            3,
+            "5341 N 7th Ave\\nPhoenix, AZ 85013",
+            1,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "The Pizza Buffet",
+            3,
+            "3208 E Bell Rd\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Buffets,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Shanghai Buffet",
+            3,
+            "4201 W Bell Rd\\nPhoenix, AZ 85053",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Tasty House Chinese Restaurant",
+            3,
+            "1512 W Bell Rd\\nSte 7\\nPhoenix, AZ 85023",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Meatballz",
+            3,
+            "1930 W Pinnacle Peak Rd\\nSte 119\\nPhoenix, AZ 85027",
+            null,
+            "Caterers,Restaurants,Event Planning & Services,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Rinaldi's Italian Deli",
+            3,
+            "21705 N 19th Ave\\nPhoenix, AZ 85027",
+            0,
+            "Delis,Italian,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Little Caesars Pizza",
+            3,
+            "1810 W Southern Ave\\nPhoenix, AZ 85041",
+            null,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Panda Express",
+            3,
+            "7630 W Lower Buckeye Rd\\nPhoenix, AZ 85043",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "101 Asian Buffet",
+            3,
+            "20440 N 27th Ave\\nPhoenix, AZ 85027",
+            1,
+            "Buffets,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Segal's Oasis Grill",
+            3,
+            "4818 N 7th St\\nPhoenix, AZ 85014",
+            0,
+            "Kosher,American (Traditional),Chinese,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Jade Fine Chinese Dining",
+            3,
+            "34455 N 27 Dr\\nSte D 160-162\\nPhoenix, AZ 85085",
+            null,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Royal Buffet",
+            3,
+            "4921 E Ray Rd\\nPhoenix, AZ 85044",
+            1,
+            "Buffets,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "South China BBQ Hong Kong Style",
+            3,
+            "4515 N 7th Ave\\nPhoenix, AZ 85013",
+            1,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Lin's Grand Buffet",
+            3,
+            "Phoenix, AZ 85042",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Gus's New York Pizza & Bar",
+            3,
+            "2755 N 91st Ave\\nSte 100\\nPhoenix, AZ 85037",
+            0,
+            "Bars,Nightlife,Italian,Restaurants,Sports Bars,Pizza",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Red Wok Buffet",
+            3,
+            "3434 E Thomas Rd\\nPhoenix, AZ 85018",
+            1,
+            "Buffets,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Naked Pizza",
+            3,
+            "25155 N 67th Ave\\nPhoenix, AZ 85083",
+            0,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Lucky Kitchen",
+            3,
+            "1520 W Indian School Rd\\nSte 1\\nPhoenix, AZ 85015",
+            1,
+            "Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Pizza Fresh",
+            3,
+            "748 E Bell Rd\\nPhoenix, AZ 85022",
+            null,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Corleone's",
+            3,
+            "10637 N Tatum Blvd\\nPhoenix, AZ 85028",
+            0,
+            "Cheesesteaks,Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "China City Super Buffet",
+            3,
+            "5301 W Indian School Rd\\nPhoenix, AZ 85031",
+            1,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Hong Kong Asian Cuisine",
+            3,
+            "3170 W Carefree Hwy\\nSte 1\\nPhoenix, AZ 85086",
+            0,
+            "Asian Fusion,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "The Skinny Italian Kitchen",
+            3,
+            "5415 E High St\\nPhoenix, AZ 85054",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "New York Pizza Department",
+            3,
+            "4036 W Buchanan St\\nPhoenix, AZ 85034",
+            0,
+            "Fast Food,Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Ling and Louie's Kitchen",
+            3,
+            "2502 E Camelback Rd\\nPhoenix, AZ 85016",
+            1,
+            "American (New),Asian Fusion,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Barro's Pizza",
+            3,
+            "3053 W Agua Fria Fwy\\nPhoenix, AZ 85027",
+            1,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Olive Garden Italian Restaurant",
+            3,
+            "2710 W North Lane\\nPhoenix, AZ 85021",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Beijing Garden Chinese",
+            3,
+            "668 N 44th ST\\nSte 112\\nPhoenix, AZ 85008",
+            1,
+            "Szechuan,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Mellow Mushroom",
+            3,
+            "14205 S 50th St\\nPhoenix, AZ 85044",
+            1,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Hungry Howies Pizza",
+            3,
+            "1635 E Baseline Rd\\nSte 105\\nPhoenix, AZ 85042",
+            null,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Humble Pie",
+            3,
+            "3400 E Sky Harbor Blvd\\nPhoenix, AZ 85034",
+            0,
+            "Bars,Pizza,Nightlife,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Boka Pizza",
+            3,
+            "Arizona Ctr Mall\\n455 N 3rd St\\nPhoenix, AZ 85004",
+            0,
+            "Italian,Pizza,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Rosati's Pizza",
+            3,
+            "2320 E Baseline Rd\\nPhoenix, AZ 85042",
+            0,
+            "Italian,Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Mr. Cooks Chinese Cuisine",
+            3,
+            "3208 E Cactus Rd\\nPhoenix, AZ 85032",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pizzeria Uno",
+            2.5,
+            "455 N 3rd St\\nPhoenix, AZ 85004",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Canton Wong",
+            2.5,
+            "2545 N 32nd St\\nPhoenix, AZ 85008",
+            0,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Crown China Super Buffet",
+            2.5,
+            "5505 N 7th St\\nPhoenix, AZ 85014",
+            1,
+            "Buffets,Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Domino's Pizza",
+            2.5,
+            "2442 E Thomas Rd\\nPhoenix, AZ 85016",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Peter Piper Pizza",
+            2.5,
+            "3945 E Thomas Rd\\nPhoenix, AZ 85018",
+            0,
+            "Pizza,Buffets,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Panda Express",
+            2.5,
+            "3923 E Thomas Rd\\nPhoenix, AZ 85018",
+            0,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Golden Coin",
+            2.5,
+            "3224 E Thomas Rd\\nPhoenix, AZ 85018",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pizza Hut",
+            2.5,
+            "3602 E Thomas Rd\\nPhoenix, AZ 85018",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pick Up Stix",
+            2.5,
+            "777 E Thunderbird Rd\\nPhoenix, AZ 85022",
+            0,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pizza Hut",
+            2.5,
+            "18440 N 7th St.\\n#13\\nPhoenix, AZ 85022",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pizza Hut",
+            2.5,
+            "3375 E Shea Blvd.\\nC2\\nPhoenix, AZ 85028",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Chuck E Cheese's",
+            2.5,
+            "3329 E Bell Rd\\nSte 15\\nPhoenix, AZ 85032",
+            1,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "New Sun Star Super Buffet",
+            2.5,
+            "5819 S Central Ave\\nPhoenix, AZ 85040",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Little Caesar's Pizza",
+            2.5,
+            "6815 S Central Ave\\nPhoenix, AZ 85042",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Gino's Pizza",
+            2.5,
+            "6420 S Central Ave\\nPhoenix, AZ 85042",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Beijing Beijing",
+            2.5,
+            "1327 E Chandler Blvd\\nPhoenix, AZ 85048",
+            0,
+            "Chinese,Restaurants",
+            null,
+            0,
+            1
+        ],
+        [
+            "Romano's Macaroni Grill",
+            2.5,
+            "21001 N. Tatum Blvd.\\nPhoenix, AZ 85050",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Sing High Chop Suey House",
+            2.5,
+            "27 W Madison St\\nPhoenix, AZ 85003",
+            1,
+            "Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "South China Buffet",
+            2.5,
+            "4515 N 7th Ave\\nPhoenix, AZ 85013",
+            null,
+            "Buffets,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pizza Hut",
+            2.5,
+            "3602 W Camelback Rd\\nPhoenix, AZ 85019",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Domino's Pizza",
+            2.5,
+            "1945 W Dunlap Ave\\n#205\\nPhoenix, AZ 85021",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Romano's Macaroni Grill",
+            2.5,
+            "2949 W. Agua Fria Fwy\\nPhoenix, AZ 85027",
+            1,
+            "Restaurants,Italian",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Great Wall Buffet",
+            2.5,
+            "10605 N 43rd Ave\\nPhoenix, AZ 85029",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Chinese Gourmet Buffet",
+            2.5,
+            "5301 W Indian School Rd\\nPhoenix, AZ 85031",
+            1,
+            "Buffets,Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Pizza Patron",
+            2.5,
+            "8243 W Indian School Rd\\nPhoenix, AZ 85033",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Streets of New York",
+            2.5,
+            "7805 N 35th Ave\\nPhoenix, AZ 85051",
+            0,
+            "Italian,Pizza,Sandwiches,Restaurants",
+            null,
+            0,
+            1
+        ],
+        [
+            "Oscar's Pizza",
+            2.5,
+            "21043 N Cave Creek Rd\\nPhoenix, AZ 85024",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Flo's Shanghai Cafe",
+            2.5,
+            "Sky Harbor International Airport\\nTerminal 4\\nPhoenix, AZ 85034",
+            null,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Pei Wei Asian Market",
+            2.5,
+            "Madison Village\\n742 E Glendale Ave\\nPhoenix, AZ 85016",
+            0,
+            "Szechuan,Asian Fusion,Japanese,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Asian Seafood Buffet",
+            2.5,
+            "668 N 44th St\\nSte 101\\nPhoenix, AZ 85008",
+            null,
+            "Seafood,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Brooklyn NYC Pizza",
+            2.5,
+            "144 E Washington St\\nPhoenix, AZ 85004",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Hungry Howie's Pizza",
+            2.5,
+            "4645 E Chandler Blvd\\nSte 106\\nPhoenix, AZ 85048",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "China Olive",
+            2.5,
+            "3434 E Thomas Rd\\nPhoenix, AZ 85018",
+            0,
+            "Buffets,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pick Up Stix",
+            2.5,
+            "1935 E Camelback Road\\nPhoenix, AZ 85016",
+            0,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Ristorante Paesano",
+            2.5,
+            "4356 W Thunderbird Rd\\nPhoenix, AZ 85003",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Papa John's Pizza",
+            2.5,
+            "4501 E Thomas Rd\\nSte 127\\nPhoenix, AZ 85018",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Papa John's Pizza",
+            2.5,
+            "4645 E Broadway Rd\\nSte 105\\nPhoenix, AZ 85040",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pizza Hut",
+            2.5,
+            "702 N 1st St\\nPhoenix, AZ 85004",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Great Dragon Restaurant",
+            2.5,
+            "2624 W Bethany Home Rd\\nPhoenix, AZ 85017",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Famous Ray's Pizza",
+            2.5,
+            "4705 E Carefree Hwy\\nPhoenix, AZ 85073",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "ASAP California Pizza Kitchen",
+            2.5,
+            "Phoenix International Airport\\n3400 E Sky Harbor Blvd, Terminal 4 near Gate 10\\nPhoenix, AZ 85034",
+            0,
+            "Fast Food,American (New),Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Little Caesars",
+            2.5,
+            "3434 W Greenway Rd\\nUnit 128\\nPhoenix, AZ 85053",
+            1,
+            "Pizza,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Jumbo Buffet",
+            2.5,
+            "3414 W Southern Ave\\nPhoenix, AZ 85041",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Papa John's Pizza",
+            2.5,
+            "751 E Bell Rd.\\nSte 10\\nPhoenix, AZ 85022",
+            null,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Best Wok Buffet",
+            2.5,
+            "5030 W McDowell Rd\\nSte 50\\nPhoenix, AZ 85035",
+            0,
+            "Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Lin's Grand Buffet",
+            2.5,
+            "7406 W McDowell Rd\\nPhoenix, AZ 85035",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Little Caesars",
+            2.5,
+            "4550 E Bell Rd\\n#192\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "New China Super Buffet",
+            2.5,
+            "601 W Bell Rd\\nPhoenix, AZ 85023",
+            0,
+            "Buffets,Chinese,Restaurants",
+            "free",
+            0,
+            1
+        ],
+        [
+            "Great China Super Buffet",
+            2.5,
+            "1501 W Bethany Home Rd\\nPhoenix, AZ 85015",
+            0,
+            "Buffets,Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Papa John's Pizza",
+            2.5,
+            "4030 E Thunderbird Rd\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Panda Express",
+            2.5,
+            "2501 W Happy Valley Rd\\nPhoenix, AZ 85085",
+            0,
+            "Chinese,Restaurants",
+            null,
+            0,
+            1
+        ],
+        [
+            "Meatballz",
+            2.5,
+            "21001 N Tatum Blvd 36-1170\\nPhoenix, AZ 85054",
+            0,
+            "Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "24th Street Pizza & Gyros",
+            2.5,
+            "3405 N 24th St\\nPhoenix, AZ 85016",
+            0,
+            "Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Downtown Pizza Lounge",
+            2.5,
+            "144 E Washington St\\nPhoenix, AZ 85004",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Nypd Pizza",
+            2.5,
+            "Terminal 4\\nPhoenix, AZ 85034",
+            null,
+            "Pizza,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Pizza & Krispy Krunchy Chicken",
+            2.5,
+            "4105 E Mcdowell Rd\\nPhoenix, AZ 85008",
+            0,
+            "Fast Food,Pizza,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Zella's Pizza And Cheesesteaks",
+            2.5,
+            "2929 N 75th Ave\\nSte 29\\nPhoenix, AZ 85033",
+            0,
+            "Restaurants,Pizza,Italian",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Zella's Pizza & Cheesesteaks",
+            2.5,
+            "13240 N 7th St\\nPhoenix, AZ 85022",
+            0,
+            "Cheesesteaks,Pizza,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "China Asia Super Buffet",
+            2.5,
+            "5301 W Indian School Rd\\nPhoenix, AZ 85031",
+            1,
+            "Buffets,Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Pizza Hut",
+            2,
+            "2835 N 16th St.\\n#103\\nPhoenix, AZ 85006",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Fusilli's",
+            2,
+            "3110 N Central Ave Ste 107\\nPhoenix, AZ 85012",
+            null,
+            "Fast Food,Restaurants,Italian",
+            null,
+            null,
+            null
+        ],
+        [
+            "Canton Wong #2",
+            2,
+            "6023 N 19th Ave\\nPhoenix, AZ 85015",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Papa John's Pizza",
+            2,
+            "5930 W McDowell Rd\\nPhoenix, AZ 85035",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "China Inn",
+            2,
+            "3 S 2nd St\\nPhoenix, AZ 85004",
+            0,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "New China Buffet",
+            2,
+            "2939 N 24th St\\nPhoenix, AZ 85016",
+            null,
+            "Buffets,Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Pizza Hut",
+            2,
+            "4708 S 48th St\\nPhoenix, AZ 85040",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pizza Hut",
+            2,
+            "2436 E Bell Rd\\nPhoenix, AZ 85032",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Domino's Pizza",
+            2,
+            "3602 E Indian School Rd\\nPhoenix, AZ 85018",
+            null,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Hungry Howie's",
+            2,
+            "1635 E Baseline\\nSte 105\\nPhoenix, AZ 85024",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "Papa John's Pizza",
+            2,
+            "231 W Thomas Rd\\nPhoenix, AZ 85013",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Eastern Buffet",
+            2,
+            "1617 E Thomas Rd\\nPhoenix, AZ 85016",
+            0,
+            "Buffets,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Panda Express",
+            2,
+            "5229 W Indian School Rd\\nPhoenix, AZ 85031",
+            0,
+            "Fast Food,Chinese,Restaurants",
+            "free",
+            0,
+            0
+        ],
+        [
+            "Papa John's Pizza",
+            2,
+            "2836 E Indian School Rd\\nPhoenix, AZ 85016",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            null,
+            null
+        ],
+        [
+            "South China Express",
+            2,
+            "1616 W Montebello Ave Ste F\\nPhoenix, AZ 85015",
+            0,
+            "Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Round Table Pizza",
+            2,
+            "Phoenix Sky Harbor Airport\\nTerminal 2\\nPhoenix, AZ 85034",
+            null,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "E-Z Buffet",
+            2,
+            "3202 E Greenway Rd\\nPhoenix, AZ 85032",
+            1,
+            "Buffets,Chinese,Restaurants",
+            "no",
+            0,
+            1
+        ],
+        [
+            "Villa Italian Kitchen",
+            2,
+            "Premium Outlets Way\\nPhoenix, AZ 85048",
+            0,
+            "Food,Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Jimmy And Joes Pizzaria",
+            2,
+            "4747 E Elliot Rd\\nPhoenix, AZ 85044",
+            null,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Go Go China",
+            1.5,
+            "13636 N Tatum Blvd\\nSte 10\\nPhoenix, AZ 85032",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Yunan Wok",
+            1.5,
+            "2948 E Bell Rd\\nSte 103\\nPhoenix, AZ 85032",
+            0,
+            "Chinese,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Papa John's Pizza",
+            1.5,
+            "18413 N Cave Creek Rd\\nPhoenix, AZ 85032",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pizza Hut",
+            1.5,
+            "1839 W Indian School Rd\\nPhoenix, AZ 85015",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pizza Hut",
+            1.5,
+            "20206 North 27th Ave., suite B\\nPhoenix, AZ 85027",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "China Buffet 2000",
+            1.5,
+            "7337 W Indian School Rd\\nPhoenix, AZ 85033",
+            null,
+            "Buffets,Chinese,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Domino's Pizza",
+            1.5,
+            "7045 N 35th Ave\\nPhoenix, AZ 85051",
+            0,
+            "Sandwiches,Pizza,Chicken Wings,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Little Caesars Pizza",
+            1.5,
+            "4145 N 83rd Avenue\\nPhoenix, AZ 85033",
+            0,
+            "Pizza,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Panda Express",
+            1.5,
+            "7000 E Mayo Blvd\\nPhoenix, AZ 85054",
+            0,
+            "Vietnamese,Asian Fusion,Chinese,Restaurants",
+            null,
+            0,
+            0
+        ],
+        [
+            "Chester's Chicken",
+            1.5,
+            "1201 North 59th Ave\\nPhoenix, AZ 85043",
+            0,
+            "Pizza,Restaurants",
+            null,
+            null,
+            null
+        ],
+        [
+            "Pizza Hut",
+            1,
+            "5233 S Central Ave Ste 9\\nPhoenix, AZ 85040",
+            0,
+            "Italian,Pizza,Chicken Wings,Restaurants",
+            "no",
+            0,
+            0
+        ],
+        [
+            "Pronto Pizza",
+            1,
+            "3130 E Union Hills Dr\\nSte 101\\nPhoenix, AZ 85022",
+            null,
+            "Italian,Pizza,Restaurants",
+            null,
+            0,
+            0
+        ]
+    ]
+}

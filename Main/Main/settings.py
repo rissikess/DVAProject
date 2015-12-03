@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'factors',
+    'areastats',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -145,3 +146,4 @@ LOGGING = {
         }
     }
 
+STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'assets'))

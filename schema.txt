@@ -1,0 +1,142 @@
+business_id
+price range
+state
+review_count
+block_id
+longitude 
+type
+stars
+neighborhoods
+ages allowed
+open
+latitude
+full_address
+city
+categories
+attire
+name
+
+payment types:
+	amex
+	visa
+	discover
+	cash only
+	mastercard
+
+perks:
+	good for kids
+	open 24 hours
+	accepts credit cards
+	dogs allowed
+	Order at Counter
+	Coat Check
+	Corkage
+	Caters
+	takes reservations
+	wifi
+	Happy Hour
+	alcohol
+	Take-out
+	Good For Dancing
+	has tv
+	byob
+	Delivery
+	By Appointment Only
+	Smoking
+	Wheelchair accessible
+	drive thru
+	BYOB/Corkage
+	Outdoor Seating
+	noise level
+
+meal type:
+	brunch
+	latenight
+	lunch
+	dessert
+	waiter service
+	breakfast
+	dinner
+
+parking:
+	garage
+	valet
+	street
+	lot
+	validated
+
+age:
+	Female:0 to 9 years
+	Female:10 to 19 years
+	female 20-29 years
+	female 30-39 years
+	Female:40 to 49 years
+	Female:50 to 59 years
+	Female:60 to 69 years
+	female 70-79 years
+	Female:80 to and above
+	Male:0 to 9 years
+	Male:10 to 19 years
+	Male:20 to 29 years
+	Male:30 to 39 years
+	Male:40 to 49 years
+	Male:50 to 59 years
+	Male:60 to 69 years
+	Male:70 to 79 years
+	Male:80 to and above
+
+
+hours:
+	thursday open
+	thursday close	
+	tuesday open
+	tuesday close
+	Monday_open
+	monday close
+	saturday_open
+	saturday_close
+	Friday_open
+	Friday_close
+	wednesday_open
+	wednesday close
+	Sunday_open
+	Sunday close
+
+
+music:
+	dj
+	jukebox
+	video
+	background music
+	karaoke
+
+ambience:
+	classy
+	divey
+	romantic
+	intimate
+	touristy
+	trendy
+	hipster
+	casual
+	upscale
+
+dietary restrictions:
+	halal
+	vegan
+	gluten free
+	vegetarian
+	kosher
+	soy free
+	dairy free
+
+income range:
+	Less than $10000
+	$200000 or more
+	$75000 to $99999
+	$100000 to $124999
+	$25000 to $49999
+	$50000 to $74999
+	$10000 to $24999
+	$150000 to $199999
+	$125000 to $149999

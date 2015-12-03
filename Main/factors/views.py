@@ -2,15 +2,20 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.decorators.csrf import csrf_exempt
 import logging
 import sqlite3
+from factors import factorIncome
+import json
+
 
 logger = logging.getLogger(__name__)
 # Create your views here.
+@csrf_exempt
 def home(request):
 	conn = sqlite3.connect('yelp_data.db')
 	cur = conn.cursor()
-	tables_list = ['age', 'income_range', 'payment_types', 'ambience', 'meal_type', 'perks', 'dietary_restrictions', 'music', 'parking', "hours", "yelp"]
+	tables_list = ['payment_types', 'ambience', 'meal_type', 'perks', 'dietary_restrictions', 'music', 'parking', "hours", "yelp"]
 	fields = {}
 	hours = ["000"]
 	hours.extend(list(range(100, 1000, 100)))
@@ -43,20 +48,27 @@ def home(request):
 	del fields['General']['Open']
 	del fields['General']['Full Address']
 	del fields['General']['Name']
+	del fields['General']['Stars']
+	del fields['General']['Attire']
 
 	fields['General']['City'] = ['Phoenix']
 	fields['General']['Categories'] = ['Persian/Iranian', 'Cheesesteaks', 'Fondue', 'Food Court', 'Drugstores', 'Sandwiches', 'Chinese', 'Food Trucks', 'Ice Cream & Frozen Yogurt', 'Nightlife', 'Lounges', 'Shopping Centers', 'Hot Dogs', 'Real Estate', 'Buffets', 'Hotels', 'Vietnamese', 'Personal Chefs', 'Venues & Event Spaces', 'Hawaiian', 'Bubble Tea', 'Bakeries', 'Juice Bars & Smoothies', 'Wine Bars', 'Pubs', 'Thai', 'Tapas Bars', 'Shared Office Spaces', 'Pakistani', 'Spanish', 'Breweries', 'Food', 'Ethiopian', 'Steakhouses', 'Fruits & Veggies', 'Afghan', 'American (New)', 'Outlet Stores', 'Japanese', 'Middle Eastern', 'Ethnic Food', 'Health Markets', 'Indonesian', 'Sports Bars', 'Restaurants', 'Belgian', 'Sushi Bars', 'Gay Bars', 'Filipino', 'Beer, Wine & Spirits', 'Cocktail Bars', 'Live/Raw Food', 'Chocolatiers & Shops', 'Tapas/Small Plates', 'Cantonese', 'Food Stands', 'German', 'Delis', 'Arcades', 'Specialty Food', 'Greek', 'Salad', 'Brazilian', 'Fast Food', 'Cajun/Creole', 'Performing Arts', 'Donuts', 'Salvadoran', 'Desserts', 'Party & Event Planning', 'Herbs & Spices', 'African', 'Asian Fusion', 'Pizza', 'Tex-Mex', 'French', 'Chicken Wings', 'Internet Cafes', 'Caterers', 'Shaved Ice', 'Meat Shops', 'Cuban', 'Gastropubs', 'Event Planning & Services', 'Peruvian', 'Food Delivery Services', 'Creperies', 'Soup', 'Do-It-Yourself Food', 'Mexican', 'Halal', 'Dive Bars', 'Butcher', 'Golf', 'Southern', 'Polish', 'Street Vendors', 'British', 'Karaoke', 'Breakfast & Brunch', 'Hotels & Travel', 'Cafes', 'Vegetarian', 'Comfort Food', 'Modern European', 'Cambodian', 'Grocery', 'Bagels', 'Vegan', 'Tea Rooms', 'Szechuan', 'Bowling', 'Irish', 'Shopping', 'Dominican', 'Indian', 'Jazz & Blues', 'Barbeque', 'Fish & Chips', 'Gluten-Free', 'Diners', 'Kosher', 'Bars', 'Laotian', 'Soul Food', 'Italian', 'Active Life', 'Mongolian', 'Caribbean', 'Mediterranean', 'Home Services', 'Beer Bar', 'Hot Pot', 'Arts & Entertainment', 'Dim Sum', 'Cheese Shops', 'Latin American', 'Dance Clubs', 'Moroccan', 'Seafood', 'Convenience Stores', 'Korean', 'American (Traditional)', 'Coffee & Tea', 'Music Venues', 'Russian', 'Burgers']
-	fields['General']['Attire'] = [row[0] for row in cur.execute('SELECT DISTINCT attire FROM yelp WHERE attire NOT NULL')].sort()
-
+	fields['General']['Review Count'] = [str(i) + " - " + str(i + 50) for i in range(0, 300, 50)]
+	fields['General']['Review Count'].append('350 and above')
 	for f in fields['General']:
 		if(type(fields['General'][f]) == list):
 			fields['General'][f].sort()
-			fields['General'][f].insert(0, 'Not specified')
 
 	conn.close()
 	#logger.debug(str(fields))
 
 	return render(request, "home/analysis.html", {"fields":fields})
 
-def ratings(request):
-	pass
+@csrf_exempt
+def analysis(request):
+	json_obj = json.loads(request.POST["value"])
+	output = factorIncome.doAnalysis(json_obj["city"], json_obj["state"], "restaurants", json_obj)
+	obs1 = [{i[0]:i[1] for i in output[0]}]
+	obs2 = [{i[0]:i[1] for i in output[1]}]
+	obs3 = [{i[0]:i[1] for i in output[2]}]
+	return HttpResponse(json.dumps({"obs1": obs1, "obs2":obs2, "obs3":obs3}))
