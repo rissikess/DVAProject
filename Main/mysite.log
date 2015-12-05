@@ -1,4 +1,10 @@
-[02/Dec/2015 22:59:53] ERROR [django.request:256] Internal Server Error: /factors/analysis/
+[04/Dec/2015 17:52:49] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[04/Dec/2015 17:52:49] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[04/Dec/2015 17:53:04] WARNING [django.request:170] Not Found: /favicon.ico
+[04/Dec/2015 18:19:11] WARNING [django.request:170] Not Found: /
+[04/Dec/2015 20:30:40] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[04/Dec/2015 20:30:40] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[04/Dec/2015 20:42:34] ERROR [django.request:256] Internal Server Error: /factors/analysis/
 Traceback (most recent call last):
   File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
@@ -6,242 +12,48 @@ Traceback (most recent call last):
     return view_func(*args, **kwargs)
   File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 70, in analysis
     output = factorIncome.doAnalysis(json_obj["city"], json_obj["state"], "restaurants", json_obj)
-  File "E:\sanju\Master's\DVA\Project\Main\factors\factorIncome.py", line 340, in doAnalysis
-    vectdata = dv.fit_transform(newdata)
-  File "C:\Python34\lib\site-packages\sklearn\feature_extraction\dict_vectorizer.py", line 226, in fit_transform
-    return self._transform(X, fitting=True)
-  File "C:\Python34\lib\site-packages\sklearn\feature_extraction\dict_vectorizer.py", line 179, in _transform
-    raise ValueError("Sample sequence X is empty.")
-ValueError: Sample sequence X is empty.
-[02/Dec/2015 23:00:34] ERROR [django.request:256] Internal Server Error: /factors/analysis/
+KeyError: 'city'
+[04/Dec/2015 20:43:27] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[04/Dec/2015 20:43:27] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[04/Dec/2015 21:15:52] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[04/Dec/2015 21:15:52] DEBUG [django.db.backends:89] (0.016) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[04/Dec/2015 21:20:13] ERROR [django.request:256] Internal Server Error: /rest/reststats/
 Traceback (most recent call last):
   File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
   File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
     return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 70, in analysis
-    output = factorIncome.doAnalysis(json_obj["city"], json_obj["state"], "restaurants", json_obj)
-  File "E:\sanju\Master's\DVA\Project\Main\factors\factorIncome.py", line 340, in doAnalysis
-    vectdata = dv.fit_transform(newdata)
-  File "C:\Python34\lib\site-packages\sklearn\feature_extraction\dict_vectorizer.py", line 226, in fit_transform
-    return self._transform(X, fitting=True)
-  File "C:\Python34\lib\site-packages\sklearn\feature_extraction\dict_vectorizer.py", line 179, in _transform
-    raise ValueError("Sample sequence X is empty.")
-ValueError: Sample sequence X is empty.
-[02/Dec/2015 23:09:48] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[02/Dec/2015 23:09:48] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[02/Dec/2015 23:48:55] ERROR [django.request:256] Internal Server Error: /area/stats/
+  File "E:\sanju\Master's\DVA\Project\Main\reststats\views.py", line 140, in getRestStats
+    cn=cursor.execute(query)
+sqlite3.OperationalError: near "orcategories": syntax error
+[04/Dec/2015 22:25:56] ERROR [django.request:256] Internal Server Error: /factors/home/
 Traceback (most recent call last):
   File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
   File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
     return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 93, in getStats
-    if(i[j]):
-TypeError: string indices must be integers
-[02/Dec/2015 23:50:44] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[02/Dec/2015 23:50:44] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[02/Dec/2015 23:53:27] ERROR [django.request:256] Internal Server Error: /area/stats/
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 53, in home
+    del fields['General']['Review_Count']
+KeyError: 'Review_Count'
+[04/Dec/2015 22:26:18] DEBUG [django.db.backends:89] (0.016) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[04/Dec/2015 22:26:18] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+[04/Dec/2015 22:26:57] ERROR [django.request:256] Internal Server Error: /factors/home/
 Traceback (most recent call last):
   File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
   File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
     return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 118, in getStats
-    if(entry["attributes"][i][el] != True):
-KeyError: 'parking'
-[02/Dec/2015 23:54:17] ERROR [django.request:256] Internal Server Error: /area/stats/
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 53, in home
+    del fields['General']['Review_Count']
+KeyError: 'Review_Count'
+[04/Dec/2015 22:27:11] ERROR [django.request:256] Internal Server Error: /factors/home/
 Traceback (most recent call last):
   File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
   File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
     return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 118, in getStats
-    if(entry["attributes"][i][el] != True):
-KeyError: 'parking'
-[02/Dec/2015 23:55:34] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[02/Dec/2015 23:55:34] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[02/Dec/2015 23:56:55] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 118, in getStats
-    if(entry["attributes"][i.title()][el] != True):
-KeyError: 'Hours'
-[03/Dec/2015 00:00:23] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:00:23] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:01:52] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 120, in getStats
-    if(entry["attributes"][i.title()][el] != True):
-KeyError: 'Hours'
-[03/Dec/2015 00:03:19] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:03:19] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:04:54] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:04:54] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:08:44] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 95, in getStats
-    if(str(entry[j]) not in i[j]):
-KeyError: 'City'
-[03/Dec/2015 00:09:41] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:09:41] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:11:19] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 95, in getStats
-    if(str(entry[j.lower()]) not in i[j]):
-TypeError: string indices must be integers
-[03/Dec/2015 00:11:44] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:11:44] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:14:26] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:14:26] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:15:28] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 130, in getStats
-    age_dict[entry["stars"]][a].append(entry[a])
-KeyError: 'Female 0 to 9'
-[03/Dec/2015 00:18:15] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:18:15] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:20:33] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:20:33] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:22:02] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 130, in getStats
-    age_dict[entry["stars"]][a].append(entry[a])
-KeyError: 'Female 0 to 9 years'
-[03/Dec/2015 00:25:23] DEBUG [django.db.backends:89] (0.016) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:25:23] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:26:22] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 130, in getStats
-    age_dict[entry["stars"]][a].append(entry[a])
-KeyError: 'Female:0 to 9 years'
-[03/Dec/2015 00:27:57] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 130, in getStats
-    age_dict[entry["stars"]][a].append(entry[a])
-KeyError: 'Female:0 to 9 years'
-[03/Dec/2015 00:29:29] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:29:29] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:33:27] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:33:27] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:34:53] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 137, in getStats
-    age_dict[rating][age] = sum(age_dict[rating][age])/len(age_dict[rating][age])
-ZeroDivisionError: division by zero
-[03/Dec/2015 00:35:59] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:35:59] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:37:54] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 137, in getStats
-    if(len(age_dict[rating][age] > 0)):
-TypeError: unorderable types: list() > int()
-[03/Dec/2015 00:38:20] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:38:20] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:39:34] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 145, in getStats
-    income_dict[rating][income] = sum(income_dict[rating][income_dict])/len(income_dict[rating][income])
-TypeError: unhashable type: 'dict'
-[03/Dec/2015 00:40:09] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:40:09] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:42:38] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:42:38] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:45:04] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:45:04] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:47:00] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:47:00] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:50:48] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:50:48] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:55:09] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:55:09] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:56:42] DEBUG [django.db.backends:89] (0.003) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:56:42] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 00:58:33] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 00:58:33] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 01:02:22] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 01:02:22] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 01:03:46] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 96, in getStats
-    if(str(entry[j.title()]) not in json_obj[i][j]):
-KeyError: 'State'
-[03/Dec/2015 01:04:10] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 01:04:10] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 01:05:18] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 96, in getStats
-    if(str(entry[j.lower()]),title() not in json_obj[i][j]):
-NameError: name 'title' is not defined
-[03/Dec/2015 01:05:38] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 01:05:38] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 01:07:05] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 01:07:05] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 01:09:24] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 01:09:24] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 01:14:04] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 01:14:04] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 01:15:42] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 01:15:42] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 01:20:10] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
-[03/Dec/2015 01:20:10] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
-[03/Dec/2015 01:26:25] ERROR [django.request:256] Internal Server Error: /area/stats/
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Python34\lib\site-packages\django\views\decorators\csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "E:\sanju\Master's\DVA\Project\Main\areastats\views.py", line 96, in getStats
-    if(str(entry[j.lower()]) not in [z.lower() for z in json_obj[i][j]]):
-KeyError: 'price_range'
+  File "E:\sanju\Master's\DVA\Project\Main\factors\views.py", line 53, in home
+    del fields['General']['Review_Count']
+KeyError: 'Review_Count'
+[04/Dec/2015 22:27:15] DEBUG [django.db.backends:89] (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+[04/Dec/2015 22:27:15] DEBUG [django.db.backends:89] (0.000) QUERY = 'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()

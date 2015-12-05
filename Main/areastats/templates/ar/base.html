@@ -8,15 +8,17 @@
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
         <link rel="stylesheet" href="{% static 'css/jquery.multiselect.css' %}">
         <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/barchart.css' %}">
+
         <!-- Include scripts -->
         <script type="text/javascript" src="{% static 'js/d3.v3.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/jquery-ui.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/jquery.multiselect.js' %}"></script>
         <script type="text/javascript" src="{% static 'css/bootstrap/js/bootstrap.js' %}"></script>
-        
-        {% block htmltyles %}{% endblock %}
+        <style>
+            /* Side Navigation */
+
+        </style>
         <title> Yelp analysis </title>
     </head>
     
@@ -47,7 +49,7 @@
                         {% block buttons %}{% endblock %}
                     </div>
                     <div class="row">
-                        <div class="col-lg-12" id="main_container">
+                        <div class="col-lg-12" id="main_container" style="height:8000px;width:1000px">
                             {% block content %}{% endblock %}
                         </div>
                     </div>

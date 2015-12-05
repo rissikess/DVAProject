@@ -1,0 +1,368 @@
+{% extends "ar/base.html" %}
+{% block sidelist %}
+{% load staticfiles%}
+    <li>
+        <a href="javascript:;" data-toggle="collapse" data-target="#General"> General <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
+        <ul id="General" class="collapse">
+            <form>
+
+            {% for k, v in fields.General.items %}
+            <div class='row'>
+                {% if v != 0 %}
+                    <div class='col-md-6'>
+                        <li style="color: #000;">{{ k }}: &nbsp<select id='{{ k.split|join:'_' }}' class="gen_filters" multiple="multiple">
+                    </div>
+                    <div class='col-md-6'>
+                        {% for val in v %}
+                            <option id='{{ val }}' value="{{ val }}"> {{ val }} </option>
+                        {% endfor %}                                    
+                        </select></li>
+                    </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            </form>
+        </ul>
+    </li>
+    {% for field, cat in fields.items %}
+        {% if field != 'General' and field != 'Hours'%}
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#{{ field.split|join:'_' }}"> {{ field }} <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
+                <ul id="{{ field.split|join:'_' }}" class="collapse">
+                    <form>
+                    {% for key in cat %}    
+                        <li><input type="checkbox" id='{{ key }}' value={{ key }}> <span style="color: #000;">{{ key }} </span></input></li>
+                    {% endfor %}
+                    </form>
+                </ul>
+            </li>
+        {% endif %}
+    {% endfor %}
+    
+
+{% endblock %}
+{% block buttons %}
+    <div class="row">
+      <div class="col md-12">
+        <button type="button" style="margin-left:130px" onclick="requestRatingData();" id="getcomp" class="btn btn-primary">Get Comparison By Ratings</button>
+        <br>
+        <p style="margin-top:5px;margin-left:130px">This page gives a visualization of the number of people per age and income group in the areas containing the restaurants as chosen by the filters in the menu. Each line in the graph corresponds to the rating of the restaurants</p>
+      </div>
+    </div>
+
+{% endblock %} 
+{% block content %}
+    <div id="analysis-content" style="height:6000px;width:800px">
+        <script>
+            $(document).ready(function(){
+                //console.log("an");
+                $(".gen_filters").multiselect();
+            });
+        </script>
+    </div>    
+{% endblock %}
+
+{% block scripts %}
+    <script>
+            function requestRatingData(){
+                var selects = $('select')
+                var inputs = $('input')
+                var $btn = $("#getcomp").button('loading');
+                form_json = {}
+                // general
+                sel = $("#General").children("form").find(selects);
+                inp = $("#General").children("form").find(inputs);
+                form_json['general'] = {}
+                for (var el in sel){
+                    if($("#"+sel[el].id).val() && sel[el].id != "Hours")
+                        form_json['general'][(sel[el]).id] = $("#"+sel[el].id).val()
+                }
+                for(var el in inp){
+                    if(inp[el])
+                        form_json['general'][(sel[el]).id] = $("#"+sel[el].id).val()
+                }
+
+                // hours
+                /*sel = $("#Hours").children("form").find(selects);
+                inp = $("#Hours").children("form").find(inputs);
+                form_json['hours'] = {}
+                for (var el in sel){
+                    form_json['hours'][(sel[el]).id] = $("#"+sel[el].id).val()
+                }*/
+
+                // others
+                otherfields = ['Payment_Types', 'Ambience', 'Meal_Type', 'Perks', 'Dietary_Restrictions', 'Music', 'Parking']
+                for(var field in otherfields){
+                    inp = $("#" + otherfields[field]).children("form").find(inputs);
+                    form_json[otherfields[field]] = []
+                    for (var el in inp){
+                        if(inp[el].checked){
+                            form_json[otherfields[field]].push($("#"+inp[el].id).val())
+                        }
+                    }
+                }
+
+
+                //console.log(JSON.stringify(form_json));
+
+                $.ajax('/area/stats/',
+                    {
+                        success: createGraph,
+                        error: errorCallback,
+                        type: 'POST',
+                        data: {"value":JSON.stringify(form_json)},
+                    }
+                )
+            }
+
+            function createGraph(data1){
+                ////console.log(data);
+                //console.log("returned");
+                //console.log(data1);
+                data = JSON.parse(data1).age;
+                data2 = JSON.parse(data1).income;
+                //console.log(data);
+                $("#analysis-content").empty();
+
+                var margin = {top: 20, right: 55, bottom: 0, left: 150},
+                    width  = 1200 - margin.left - margin.right,
+                    height = 500  - margin.top  - margin.bottom;
+
+                var x = d3.scale.ordinal()
+                    .rangeRoundBands([0, width], .1);
+
+                var y = d3.scale.linear()
+                    .rangeRound([height, 0]);
+
+                var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .orient("bottom");
+
+                var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient("left");
+
+                var line = d3.svg.line()
+                    .interpolate("cardinal")
+                    .x(function (d) { return x(d.label) + x.rangeBand() / 2; })
+                    .y(function (d) { return y(d.value); });
+
+                var color = d3.scale.category10()
+                    
+
+                var svg = d3.select("#analysis-content").append("svg")
+                    .attr("width",  2000)
+                    .attr("height", 700)
+                  .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                  var labelVar = 'group';
+                  var varNames = ["1","1.5","2","2.5","3","3.5","4","4.5","5"]
+                  color.domain(["1","1.5","2","2.5","3","3.5","4","4.5","5"]);
+
+                  var seriesData = varNames.map(function (name) {
+                    return {
+                      name: name,
+                      values: data.map(function (d) {
+                        return {name: name, label: d[labelVar], value: +d[name]};
+                      })
+                    };
+                  });
+
+                  x.domain(data.map(function (d) { return d.group; }));
+                  y.domain([
+                    d3.min(seriesData, function (c) { 
+                      return d3.min(c.values, function (d) { return d.value; });
+                    }),
+                    d3.max(seriesData, function (c) { 
+                      return d3.max(c.values, function (d) { return d.value; });
+                    })
+                  ]);
+
+                  svg.append("text")
+                      .attr("class", "title")
+                      .attr("x", 32)
+                      .attr("y", 36)
+                      .style("font-weight", "bold")
+                      .text("Age group vs number of people overall per rating");
+
+                  svg.append("g")
+                      .attr("class", "x axis")
+                      .attr("transform", "translate(0,480)")
+                      .text("Age group")
+                      .call(xAxis)
+                    .selectAll(".tick text")
+                      .style("font-size", "10px")
+                      .call(wrap, x.rangeBand());
+
+                  svg.append("g")
+                      .attr("class", "y axis")
+                      .call(yAxis)
+                    .append("text")
+                      .attr("transform", "rotate(-90)")
+                      .attr("y", 6)
+                      .attr("dy", ".71em")
+                      .style("text-anchor", "end")
+                      .style("font-size", "10px")
+                      .text("Number of People");
+
+                  var series = svg.selectAll(".series")
+                      .data(seriesData)
+                    .enter().append("g")
+                      .attr("class", "series");
+
+                  series.append("path")
+                    .attr("class", "line")
+                    .attr("d", function (d) { return line(d.values); })
+                    .style("stroke", function (d) { return color(d.name); })
+                    .style("stroke-width", "2px")
+                    .style("fill", "none");
+
+                  var legend = svg.selectAll(".legend")
+                      .data(varNames.slice().reverse())
+                    .enter().append("g")
+                      .attr("class", "legend")
+                      .attr("transform", function (d, i) { return "translate(55," + i * 20 + ")"; });
+
+                  legend.append("rect")
+                      .attr("x", width - 10)
+                      .attr("width", 10)
+                      .attr("height", 10)
+                      .style("fill", color)
+                      .style("stroke", "grey");
+
+                  legend.append("text")
+                      .attr("x", width - 12)
+                      .attr("y", 6)
+                      .attr("dy", ".35em")
+                      .style("text-anchor", "end")
+                      .text(function (d) { return d; });
+
+
+                  var margin = {top: 10, right: 55, bottom: 0, left: 150},
+                    width  = 1200 - margin.left - margin.right,
+                    height = 500  - margin.top  - margin.bottom;
+
+                  var svg = d3.select("#analysis-content").append("svg")
+                    .attr("width",  2000)
+                    .attr("height", 700)
+                  .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                  var labelVar = 'group';
+                  var varNames = ["1","1.5","2","2.5","3","3.5","4","4.5","5"]
+                  color.domain(["1","1.5","2","2.5","3","3.5","4","4.5","5"]);
+
+                  var seriesData = varNames.map(function (name) {
+                    return {
+                      name: name,
+                      values: data2.map(function (d) {
+                        return {name: name, label: d[labelVar], value: +d[name]};
+                      })
+                    };
+                  });
+
+                  x.domain(data2.map(function (d) { return d.group; }));
+                  y.domain([
+                    d3.min(seriesData, function (c) { 
+                      return d3.min(c.values, function (d) { return d.value; });
+                    }),
+                    d3.max(seriesData, function (c) { 
+                      return d3.max(c.values, function (d) { return d.value; });
+                    })
+                  ]);
+
+                  svg.append("text")
+                      .attr("class", "title")
+                      .attr("x", 32)
+                      .attr("y", 30)
+                      .style("font-weight","bold")
+                      .text("Income group vs number of people overall per rating");
+
+                  svg.append("g")
+                      .attr("class", "x axis")
+                      .attr("transform", "translate(0,470)")
+                      .text("Age group")
+                      .call(xAxis)
+                    .selectAll(".tick text")
+                      .style("font-size", "10px")
+                      .call(wrap, x.rangeBand());
+
+                  svg.append("g")
+                      .attr("class", "y axis")
+                      .call(yAxis)
+                    .append("text")
+                      .attr("transform", "rotate(-90)")
+                      .attr("y", 6)
+                      .attr("dy", ".71em")
+                      .style("text-anchor", "end")
+                      .style("font-size", "10px")
+                      .text("Number of People");
+
+                  var series = svg.selectAll(".series")
+                      .data(seriesData)
+                    .enter().append("g")
+                      .attr("class", "series");
+
+                  series.append("path")
+                    .attr("class", "line")
+                    .attr("d", function (d) { return line(d.values); })
+                    .style("stroke", function (d) { return color(d.name); })
+                    .style("stroke-width", "2px")
+                    .style("fill", "none");
+
+                  var legend = svg.selectAll(".legend")
+                      .data(varNames.slice().reverse())
+                    .enter().append("g")
+                      .attr("class", "legend")
+                      .attr("transform", function (d, i) { return "translate(55," + i * 20 + ")"; });
+
+                  legend.append("rect")
+                      .attr("x", width - 10)
+                      .attr("width", 10)
+                      .attr("height", 10)
+                      .style("fill", color)
+                      .style("stroke", "grey");
+
+                  legend.append("text")
+                      .attr("x", width - 12)
+                      .attr("y", 6)
+                      .attr("dy", ".35em")
+                      .style("text-anchor", "end")
+                      .text(function (d) { return d; });
+                  $("#getcomp").button('reset');
+
+                  function wrap(text, width) {
+                    text.each(function() {
+                     // width = width - 19
+                      var text = d3.select(this),
+                          words = text.text().split(/\s+/).reverse(),
+                          word,
+                          line = [],
+                          lineNumber = 0,
+                          lineHeight = 1.2, // ems
+                          y = text.attr("y"),
+                          dy = parseFloat(text.attr("dy")),
+                          tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+                      while (word = words.pop()) {
+                        line.push(word);
+                        tspan.text(line.join(" "));
+                        if (tspan.node().getComputedTextLength() > width) {
+                          line.pop();
+                          tspan.text(line.join(" "));
+                          line = [word];
+                          tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+                        }
+                      }
+                  });
+                }
+
+               }
+
+            function errorCallback(data, status, errno){
+                //console.log(status);
+                //console.log(errno);
+                alert("Oops something went wrong! Reload and try again with different filters");
+            }
+    </script>
+{% endblock %}

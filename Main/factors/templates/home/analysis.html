@@ -1,40 +1,4 @@
 {% extends "home/base.html" %}
-{% block htmlstyles %}
-<style>
-    #chart rect{
-	  fill: #4aaeea;
-	}
-
-
-
-	.axis text{
-	  font: 15px sans-serif;
-	}
-
-	.axis path, .axis line{
-	  fill: none;
-	  stroke : #fff;
-	  shape-rendering: crispEdges;
-	}
-
-
-	.bar {
-	  fill: indigo;
-	}
-
-
-	.bar:hover {
-	  fill: brown;
-	}
-
-
-	.text { width:50%;}
-
-	.text{
-		font: 15px sans-serif;
-	}
-</style>
-{% endblock %}
 
 {% block sidelist %}
 	<li>
@@ -46,7 +10,7 @@
 			<div class='row'>
 			    {% if v != 0 %}
 			    	<div class='col-md-6'>
-					    <li style="color: #9d9d9d;">{{ k }}: &nbsp<select id='{{ k.split|join:'_' }}' class="gen_filters" multiple="multiple">
+					    <li style="color: #000;">{{ k }}: &nbsp<select id='{{ k.split|join:'_' }}' class="gen_filters" multiple="multiple">
 					</div>
 					<div class='col-md-6'>
 					    {% for val in v %}
@@ -67,34 +31,34 @@
 	            <ul id="{{ field.split|join:'_' }}" class="collapse">
 	            	<form>
 	                {% for key in cat %}    
-	                	<li><input type="checkbox" id='{{ key }}' value={{ key }}> <span style="color: #9d9d9d;">{{ key }} </span></input></li>
+	                	<li><input type="checkbox" id='{{ key }}' value={{ key }}> <span style="color: #000;">{{ key }} </span></input></li>
 	                {% endfor %}
 	            	</form>
 	            </ul>
 	        </li>
 	    {% endif %}
     {% endfor %}
-    <li>
-		<a href="javascript:;" data-toggle="collapse" data-target="#Hours"> Hours <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
-        <ul id="Hours" class="collapse">
-        	<form>
-			{% for k, v in fields.Hours.items %}
-				<li style="color: #9d9d9d;">{{ k }}: &nbsp<select id='{{ k.split|join:'_' }}' class="hour_filters">
-				{% for val in v %}
-				    <option value="{{ val }}"> {{ val }} </option>
-				{% endfor %}	           						
-				</select></li>		       
-			{% endfor %}
-			</form>
-		</ul>
-	</li>
+    
 
 {% endblock %}
 {% block buttons %}
-	<button type="button" onclick="requestFactorData();" class="btn btn-primary" style="padding-left:20px">Get Comparison By Ratings</button>
+	<button type="button" onclick="requestFactorData();" class="btn btn-primary" id="getanalysis" style="margin-left:130px">Get Factor Analysis</button>
+	<button type="button" id="togglebutton" onclick="toggle();" data-name="show" "getprediction" class="btn btn-primary" style="margin-left:130px" disabled>Make Prediction</button>
+	<div style="margin-left:130px;margin-top:10px">This page gives the contribution of factors to the rating of a restaurant per class. 
+		<ul>
+			<li>0 – 2.5 Pretty Bad (PB)</li>
+			<li>>=3.0 Not Bad (NB)</li>
+			<li>3.0 to 4.0 Good (G)</li>
+			<li>= 3.0 Fair (F)</li>
+			<li>3.5 – 4.0 Above Average (AA/AAvg)</li>
+			<li>4.5 – 5.0 Extremely good (EG)</li>
+		</ul>
+	</div>
 {% endblock %} 
 {% block content %}
-    <div id="analysis-content">
+	<br>
+	<div id="predict_filters" style="margin-left:125px;display:none"></div>
+    <div id="analysis-content" style="margin-top:20px;height:4000px;width:800px;">
         <script>
         	$(document).ready(function(){
    				$(".gen_filters").multiselect();
@@ -105,10 +69,14 @@
 
 {% block scripts %}
     <script>
+    		function toggle(){
+                $("#predict_filters").toggle("medium");
+            }
+
             function requestFactorData(){
                 var selects = $('select')
                 var inputs = $('input')
-                
+                var $btn = $("#getanalysis").button('loading');
                 form_json = {}
                 // general
                 sel = $("#General").children("form").find(selects);
@@ -140,7 +108,7 @@
                         }
                     }
                 }
-                console.log(form_json)
+                //console.log(form_json)
                 new_json = {"attributes":{}}
                 for(var el in form_json){
                 	if(el == "general"){
@@ -148,12 +116,12 @@
                 			if(x == "Categories"){
                 				new_json[x.toLowerCase()] = form_json["general"]["Categories"]
                 			}
-                			else if(x == "Price_Range"){
+                			else if(x == "Price_Range" && form_json["general"][x]){
                 				new_json["attributes"][x.replace("_"," ")] = parseInt(form_json["general"][x][0]);
                 			}
                 			else if(x!="Review_Count"){
                 				if(x && form_json["general"][x]){
-                					console.log(x);
+                					//console.log(x);
                 					new_json[x.toLowerCase().replace("_"," ")] = form_json["general"][x][0]
                 				}
                 			}
@@ -182,8 +150,8 @@
                 }
 
                 new_json["state"] = "AZ"
-                console.log(JSON.stringify(new_json));
-                //console.log(JSON.stringify(form_json));
+                //console.log(JSON.stringify(new_json));
+                ////console.log(JSON.stringify(form_json));
 
                 $.ajax('/factors/analysis/',
                     {
@@ -196,18 +164,25 @@
             }
 
             function createGraph(data){
-                console.log(data);
-                data = JSON.parse(data);
-                data = data["obs1"]
-                	var margin = {top: 50, right: 0, bottom: 30, left: 0},
-					width = 1600 - margin.left - margin.right,
-					height = 1200 - margin.top - margin.bottom;
+                //console.log(data);
+                $("#analysis-content").empty();
+                data1 = JSON.parse(data);
+                data = data1["obs1"]
+                var $btn = $("#getanalysis").button('reset');
+                $("#togglebutton").attr("disabled", false);
+                if(data.length == 0){
+                	alert("Filters too strong")
+                }
+                else{
+                	var margin = {top: 20, right: 0, bottom: 0, left: 0},
+					width = 1000 - margin.left - margin.right,
+					height = 400 - margin.top - margin.bottom;
 
 					var x = d3.scale.linear()
 						.range([0, width - 500]);
 
 					var y = d3.scale.ordinal()
-						.rangeRoundBands([0, height-900], .75);
+						.rangeRoundBands([0, 800-500], .45);
 
 					var xAxis = d3.svg.axis()
 						.scale(x)
@@ -235,8 +210,8 @@
 						//alert(x.domain()[1]);
 					  svg.append("g")
 						  .attr("class", "x axis")
-						  .attr("transform", "translate("+ 300 + "," + 220 + ")")
-						  .style("fill","white")
+						  .attr("transform", "translate("+ 300 + "," + 282 + ")")
+						  .style("fill","black")
 						  .style("font-size","15px")
 						  .call(xAxis)
 						  .append("text")
@@ -244,7 +219,7 @@
 						  .attr("x", width-350)
 						  .attr("dx", ".71em")
 						  .style("text-anchor", "end")
-						  .style("fill","white")
+						  .style("fill","black")
 						  .style("font-size","15px")
 						  .style("font-weight", "bold")
 						  .text("Factor weights");
@@ -252,7 +227,7 @@
 					  svg.append("g")
 						  .attr("class", "y axis")
 						  .attr("transform", "translate("+ 300 + "," + 0 + ")")
-						  .style("fill","white")
+						  .style("fill","black")
 						  .style("font-size","25px")
 						  .call(yAxis)
 						.append("text")
@@ -260,7 +235,71 @@
 						  .attr("x", -30)
 						  .attr("dy", ".71em")
 						  .style("text-anchor", "end")
-						  .style("fill","white")
+						  .style("fill","black")
+						  .style("font-size","15px")
+						  .style("font-weight", "bold")
+						  .text("Factors");
+					//alert(x.domain()[1]);
+					  svg.selectAll(".bar")
+						  .data(d3.entries(data[0]))
+						.enter().append("rect")
+						  .attr("class", "bar")
+						  .attr("y", function(d) { return y(d.key); })
+						  .attr("height", y.rangeBand())
+						  .attr("x", function(d) { return 300;})
+						  .attr("width", function(d) { return x(d.value); })
+						  
+						
+						svg.append("text")
+							.attr("x", 22)             
+							.attr("y", 30)
+							.attr("text-anchor", "middle")  
+							.style("font-size", "16px") 
+							.style("text-decoration", "underline")  
+							.style("fill","White	")
+							.text("Factors v/s Weights Graph - PB");
+					
+					data = data1["obs2"];
+					var svg = d3.select("#analysis-content").append("svg")
+						.attr("class", "chart")
+						.attr("width", width + margin.left + margin.right)
+						.attr("height", height + margin.top + margin.bottom)
+					  .append("g")
+						.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+					  
+					  x.domain([0, d3.max(d3.values(data[0]))+0.01]);
+					  //alert(x.domain()[1]);
+					  y.domain(d3.keys(data[0]));
+
+						//alert(x.domain()[1]);
+					  svg.append("g")
+						  .attr("class", "x axis")
+						  .attr("transform", "translate("+ 300 + "," + 282 + ")")
+						  .style("fill","black")
+						  .style("font-size","15px")
+						  .call(xAxis)
+						  .append("text")
+						  //.attr("transform", "translate("+ 0 + "," + height-80 + ")")
+						  .attr("x", width-350)
+						  .attr("dx", ".71em")
+						  .style("text-anchor", "end")
+						  .style("fill","black")
+						  .style("font-size","15px")
+						  .style("font-weight", "bold")
+						  .text("Factor weights");
+					//alert(x.domain()[1]);
+					  svg.append("g")
+						  .attr("class", "y axis")
+						  .attr("transform", "translate("+ 300 + "," + 0 + ")")
+						  .style("fill","black")
+						  .style("font-size","25px")
+						  .call(yAxis)
+						.append("text")
+						  .attr("y", -10)
+						  .attr("x", -30)
+						  .attr("dy", ".71em")
+						  .style("text-anchor", "end")
+						  .style("fill","black")
 						  .style("font-size","15px")
 						  .style("font-weight", "bold")
 						  .text("Factors");
@@ -282,18 +321,197 @@
 							.style("font-size", "16px") 
 							.style("text-decoration", "underline")  
 							.style("fill","White	")
-							.text("Factors v/s Weights Graph");
-					
+							.text("Factors v/s Weights Graph - NB");
+
+					data = data1["obs3"]
+					var svg = d3.select("#analysis-content").append("svg")
+						.attr("class", "chart")
+						.attr("width", width + margin.left + margin.right)
+						.attr("height", height + margin.top + margin.bottom)
+					  .append("g")
+						.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+					  
+					  x.domain([0, d3.max(d3.values(data[0]))+0.01]);
+					  //alert(x.domain()[1]);
+					  y.domain(d3.keys(data[0]));
+
+						//alert(x.domain()[1]);
+					  svg.append("g")
+						  .attr("class", "x axis")
+						  .attr("transform", "translate("+ 300 + "," + 282 + ")")
+						  .style("fill","black")
+						  .style("font-size","15px")
+						  .call(xAxis)
+						  .append("text")
+						  //.attr("transform", "translate("+ 0 + "," + height-80 + ")")
+						  .attr("x", width-350)
+						  .attr("dx", ".71em")
+						  .style("text-anchor", "end")
+						  .style("fill","black")
+						  .style("font-size","15px")
+						  .style("font-weight", "bold")
+						  .text("Factor weights");
+					//alert(x.domain()[1]);
+					  svg.append("g")
+						  .attr("class", "y axis")
+						  .attr("transform", "translate("+ 300 + "," + 0 + ")")
+						  .style("fill","black")
+						  .style("font-size","25px")
+						  .call(yAxis)
+						.append("text")
+						  .attr("y", -10)
+						  .attr("x", -30)
+						  .attr("dy", ".71em")
+						  .style("text-anchor", "end")
+						  .style("fill","black")
+						  .style("font-size","15px")
+						  .style("font-weight", "bold")
+						  .text("Factors");
+					//alert(x.domain()[1]);
+					  svg.selectAll(".bar")
+						  .data(d3.entries(data[0]))
+						.enter().append("rect")
+						  .attr("class", "bar")
+						  .attr("y", function(d) { return y(d.key); })
+						  .attr("height", y.rangeBand())
+						  .attr("x", function(d) { return 300;})
+						  .attr("width", function(d) { return x(d.value); })
+						  
+						
+						svg.append("text")
+							.attr("x", (width / 2))             
+							.attr("y", 0 - (margin.top / 2))
+							.attr("text-anchor", "middle")  
+							.style("font-size", "16px") 
+							.style("text-decoration", "underline")  
+							.style("fill","White	")
+							.text("Factors v/s Weights Graph - F");
 
 					function type(d) {
 						d.letter = +d.letter; // coerce to number
 						return d;
 					  }
+				}
+
+				$("#predict_filters").empty();
+				unique_vals = [];
+
+				for(dataset in data1){
+					keys = Object.keys(data1[dataset][0]);
+					for (key in keys){
+						flag = false;
+						if(keys[key].indexOf("attributes") > -1){
+							attr = keys[key].split("_")[1]
+							if(attr.indexOf("=") > -1){
+								if(unique_vals.indexOf("Perks") == -1){
+									unique_vals.push("Perks")
+								}
+							}
+							else{
+								attr = attr.split(" ");
+								for(at in attr){
+									if((attr[at].charAt(0) == attr[at].charAt(0).toLowerCase()) && attr[at] != "at" && attr[at] != "for"){
+										flag = true;
+										actual = attr.slice(0, at).join(" ");
+										if(unique_vals.indexOf(actual) == -1){
+											if(actual == "Good For" && unique_vals.indexOf("Meal Type") == -1){
+												unique_vals.push("Meal Type")
+											}
+											else if(actual != "Good For"){
+												unique_vals.push(actual)
+											}
+										}
+										break;
+									}
+								}
+							}
+							if(flag == false){
+								if(unique_vals.indexOf("Perks") == -1){
+									unique_vals.push("Perks")
+								}
+							}
+						}
+						else if(unique_vals.indexOf("block_id") == -1){
+							unique_vals.push("block_id");
+						}
+						else{
+							//console.log(keys[key]);
+						}
+					}
+				}
+
+				//console.log(unique_vals);
+				$.ajax('/factors/userfilters/',
+                    {
+                        success: userFilters,
+                        error: errorCallback,
+                        type: 'POST',
+                        data: {"value":JSON.stringify(unique_vals)},
+                    });
             }
 
             function errorCallback(data, status, errno){
-                console.log(status);
-                console.log(errno);
+                //console.log(status);
+                //console.log(errno);
+                alert("Oops something went wrong! Reload and try again with different filters");
             }
+
+            function userFilters(data){
+            	////console.log(data);
+            	data = JSON.parse(data).value;
+            	for (el in data){
+            		sel = document.createElement("select");
+            		sel.setAttribute("id", el)
+            		sel.style.paddingLeft = "10px"
+            		sel.style.length = "30px"
+            		sel.setAttribute("class", "form-control")
+
+            		for (val in data[el]){
+            			opt = document.createElement("option");
+            			opt.setAttribute("value", data[el][val].replace("_", " "));
+            			opt.innerHTML = data[el][val];
+            			sel.appendChild(opt);
+            		}
+            		text = document.createTextNode(el + ": ");
+            		$("#predict_filters").append(text);
+            		$("#predict_filters").append(sel);
+            	}
+            	$("#predict_filters").append(document.createElement("br"));
+            	button = document.createElement("button");
+            	button.setAttribute("type", "button");
+            	button.setAttribute("class", "btn btn-primary");
+            	button.setAttribute("onclick", "getPrediction()");
+            	button.setAttribute("id", "getprediction")
+            	button.innerHTML = "Get Predicted Rating";
+            	$("#predict_filters").append(button)
+            	p = document.createElement("p");
+            	p.setAttribute("id", "valueRet");
+            	$("#predict_filters").append(p);
+            }
+
+            function getPrediction(){
+            	formels = $('.form-control');
+            	var $btn = $("#getprediction").button('loading');
+            	$("#valueRet").html(" ");
+            	toSend = {}
+            	for(var el in formels){
+            		if(formels[el].value){
+            			toSend[formels[el].id] = formels[el].value;
+            		}
+            	}
+				$.ajax('/factors/predict/',
+                    {
+                        success: predictRating,
+                        error: errorCallback,
+                        type: 'POST',
+                        data: {"value":JSON.stringify(toSend)},
+                    });            
+			}
+
+			function predictRating(data){
+				//console.log(data);
+				var $btn = $("#getprediction").button('reset');
+				$("#valueRet").html("<b>" + JSON.parse(data)["result"] +"</b>");
+			}
     </script>
 {% endblock %}

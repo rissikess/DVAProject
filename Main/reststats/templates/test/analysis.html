@@ -1,0 +1,176 @@
+{% extends "test/base.html" %}
+{% block sidelist %}
+{% load staticfiles%}
+    <li>
+        <a href="javascript:;" data-toggle="collapse" data-target="#General"> General <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
+        <ul id="General" class="collapse">
+            <form>
+
+            {% for k, v in fields.General.items %}
+            <div class='row'>
+                {% if v != 0 %}
+                    <div class='col-md-6'>
+                        <li style="color: #000;">{{ k }}: &nbsp<select id='{{ k.split|join:'_' }}' class="gen_filters" multiple="multiple">
+                    </div>
+                    <div class='col-md-6'>
+                        {% for val in v %}
+                            <option id='{{ val }}' value="{{ val }}"> {{ val }} </option>
+                        {% endfor %}                                    
+                        </select></li>
+                    </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            </form>
+        </ul>
+    </li>
+    {% for field, cat in fields.items %}
+        {% if field != 'General' and field != 'Hours'%}
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#{{ field.split|join:'_' }}"> {{ field }} <i class="pull-right glyphicon glyphicon-chevron-down"></i></a>
+                <ul id="{{ field.split|join:'_' }}" class="collapse">
+                    <form>
+                    {% for key in cat %}    
+                        <li><input type="checkbox" id='{{ key }}' value={{ key }}> <span style="color: #000;">{{ key }} </span></input></li>
+                    {% endfor %}
+                    </form>
+                </ul>
+            </li>
+        {% endif %}
+    {% endfor %}
+    
+
+{% endblock %}
+{% block buttons %}
+    <button type="button" style="margin-left:130px" id="newbutton" onclick="requestRestaurantData();" class="btn btn-primary">Get Restaurant Statistics</button>
+    <br>
+    <p style="margin-top:10px;margin-left:130px">This page gives a pie chart of number of restaurants that satisfy the selected criteria</p>
+{% endblock %} 
+{% block content %}
+    <div id="analysis-content" style="margin-left:140px;margin-top:50px;height:4000px;width:800px">
+        <script>
+            $(document).ready(function(){
+                $(".gen_filters").multiselect();
+                //console.log("hi")
+            });
+        </script>
+    </div>    
+{% endblock %}
+
+{% block scripts %}
+    <script>
+            function requestRestaurantData(){
+                //console.log("Entered");
+                $("#newbutton").button("loading");
+                var selects = $('select')
+                var inputs = $('input')
+                $("#analysis-content").empty()
+                form_json = {}
+                // general
+                sel = $("#General").children("form").find(selects);
+                inp = $("#General").children("form").find(inputs);
+                form_json['general'] = {}
+                for (var el in sel){
+                    if($("#"+sel[el].id).val() && sel[el].id != "Hours")
+                        form_json['general'][(sel[el]).id] = $("#"+sel[el].id).val()
+                }
+                for(var el in inp){
+                    if(inp[el])
+                        form_json['general'][(sel[el]).id] = $("#"+sel[el].id).val()
+                }
+
+                // hours
+                /*sel = $("#Hours").children("form").find(selects);
+                inp = $("#Hours").children("form").find(inputs);
+                form_json['hours'] = {}
+                for (var el in sel){
+                    form_json['hours'][(sel[el]).id] = $("#"+sel[el].id).val()
+                }*/
+
+                // others
+                otherfields = ['Payment_Types', 'Ambience', 'Meal_Type', 'Perks', 'Dietary_Restrictions', 'Music', 'Parking']
+                for(var field in otherfields){
+                    inp = $("#" + otherfields[field]).children("form").find(inputs);
+                    form_json[otherfields[field]] = []
+                    for (var el in inp){
+                        if(inp[el].checked){
+                            form_json[otherfields[field]].push($("#"+inp[el].id).val())
+                        }
+                    }
+                }
+
+
+                //console.log(JSON.stringify(form_json));
+
+                $.ajax('/rest/reststats/',
+                    {
+                        success: createGraph,
+                        error: errorCallback,
+                        type: 'POST',
+                        data: {"value":JSON.stringify(form_json)},
+                    }
+                )
+            }
+
+            function createGraph(data){
+                ////console.log(data);
+                //console.log("returned");
+                //console.log(data);
+                data = JSON.parse(data);
+                $("#newbutton").button("reset");
+                var w = 400;
+                var h = 400;
+                var r = h/2;
+                var color = d3.scale.category20c();
+                var margin = {top: 20, right: 0, bottom: 0, left: 0},
+                    width = 1000 - margin.left - margin.right,
+                    height = 1000 - margin.top - margin.bottom;
+                var vis = d3.select('#analysis-content')
+                            .append("svg:svg")
+                            .data([data])
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("svg:g")
+                            .attr("transform", "translate(" + r + "," + r + ")");
+
+                var pie = d3.layout.pie().value(function(d){return d.value;});
+
+                // declare an arc generator function
+                var arc = d3.svg.arc().outerRadius(r);
+
+                // select paths, use arc generator to draw
+                var arcs = vis.selectAll("g.slice")
+                            .data(pie)
+                            .enter()
+                            .append("svg:g")
+                            .attr("class", "slice");
+                
+                arcs.append("svg:path")
+                    .attr("fill", function(d, i){
+                        return color(i);
+                    })
+                    .attr("d", function (d) {
+                        // log the result of the arc generator to show how cool it is :)
+                        //console.log(arc(d));
+                        return arc(d);
+                    });
+
+                // add the text
+                arcs.append("svg:text").attr("transform", function(d){
+                            d.innerRadius = 0;
+                            d.outerRadius = r;
+                
+                return "translate(" + arc.centroid(d) + ")";})
+                        .attr("text-anchor", "middle")
+                        .text( function(d, i) {
+                            return data[i].label+'-'+data[i].value;
+                        });
+            }
+
+            function errorCallback(data, status, errno){
+                //console.log(status);
+                //console.log(errno);
+                alert("Oops something went wrong! Reload and try again with different filters");
+            }
+    </script>
+{% endblock %}

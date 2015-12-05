@@ -20,8 +20,38 @@ from sklearn.cross_validation import train_test_split, StratifiedShuffleSplit
 #from mlpy import KFDA
 #import set
 
+import json
+import re
+import csv
+from sklearn.feature_extraction import DictVectorizer
+from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
+import matplotlib.pyplot as plt
+from scipy.stats.stats import pearsonr
+from operator import itemgetter
+import unicodedata
+from sklearn.svm import LinearSVC, SVC, SVR, NuSVC,NuSVR
+import pickle
+from sklearn.externals import joblib
+from scipy.sparse import csr_matrix
+from numpy import savetxt, loadtxt, append, zeros
+import numpy as np
+from collections import Counter
+
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier
+from sklearn.multiclass import OneVsRestClassifier, OneVsOneClassifier
+from sklearn.cross_validation import train_test_split, StratifiedShuffleSplit
+#import mlpy
+#from mlpy import KFDA
+#import set
+
 from sklearn.cross_validation import StratifiedKFold
 from sklearn.feature_selection import RFECV, RFE
+from sklearn.preprocessing import Imputer
+
+
+
 
 from django.conf import settings as djangoSettings
 
@@ -340,15 +370,23 @@ def doAnalysis(city, state, category, filterConditions, k=10):
               dv = DictVectorizer(sparse=False)
               vectdata = dv.fit_transform(newdata)
               #print vectdata[0]
+              joblib.dump(dv, 'dv.pkl')
+              savetxt('vectdata.txt',vectdata)
 
 
               nbdv = DictVectorizer(sparse=False)
               nbvectdata = nbdv.fit_transform(nbnewdata)
               #print nbvectdata[0]
+              joblib.dump(nbdv, 'nbdv.pkl')
+              savetxt('nbvectdata.txt',nbvectdata)
 
               fdv = DictVectorizer(sparse=False)
               fvectdata = fdv.fit_transform(fnewdata)
               #print nbvectdata[0]
+              joblib.dump(fdv, 'fdv.pkl')
+              savetxt('fvectdata.txt',fvectdata)
+
+
               #print (len(flabels), len(fnewdata), len(fvectdata))
               # split = (int)(round(len(vectdata)*0.7))
               # print split
@@ -558,12 +596,12 @@ def doAnalysis(city, state, category, filterConditions, k=10):
               # plt.plot(range(1, len(rfe.scores_) + 1), rfe.scores_)
               # plt.show()
               rfefeatimps = []
-              rfefeatnames = [dv.feature_names_[i] for i, supp in enumerate(rfe.support_) if supp == True ]
+              rfefeatnames = [dv.feature_names_[i].replace("attributes ", "attributes_") for i, supp in enumerate(rfe.support_) if supp == True ]
               impsums = sum(rfe.estimator_.feature_importances_)
               rfeimps =  sorted(zip(rfefeatnames,rfe.estimator_.feature_importances_/impsums),key=itemgetter(1),reverse=True)
               #print (rfeimps)
               #print (sum([pair[1] for pair in rfeimps]))
-
+              joblib.dump(ovs, 'rfc.pkl')
 
 
 
@@ -635,11 +673,12 @@ def doAnalysis(city, state, category, filterConditions, k=10):
               nbrfetestdata = [[each_list[i] for i, supp in enumerate(nbrfe.support_) if supp == True ] for each_list in nbtestdata]
               #print "nbrfeacc ", nbrfe.estimator_.score(nbrfetestdata, nbtestlabels)
 
-              nbrfefeatnames = [dv.feature_names_[i] for i, supp in enumerate(nbrfe.support_) if supp == True ]
+              nbrfefeatnames = [dv.feature_names_[i].replace("attributes ", "attributes_") for i, supp in enumerate(nbrfe.support_) if supp == True ]
               nbimpsums = sum(nbrfe.estimator_.feature_importances_)
               nbrfeimps =  sorted(zip(nbrfefeatnames,nbrfe.estimator_.feature_importances_/nbimpsums),key=itemgetter(1),reverse=True)
               #print nbrfeimps
               #print sum([pair[1] for pair in nbrfeimps])
+              joblib.dump(nbovs, 'nbrfc.pkl')
 
               # #jj
               # nbovs2 = OneVsRestClassifier(AdaBoostClassifier(n_estimators=200))
@@ -705,11 +744,12 @@ def doAnalysis(city, state, category, filterConditions, k=10):
               frfetestdata = [[each_list[i] for i, supp in enumerate(frfe.support_) if supp == True ] for each_list in ftestdata]
               #print "frfeacc ", frfe.estimator_.score(frfetestdata, ftestlabels)
 
-              frfefeatnames = [dv.feature_names_[i] for i, supp in enumerate(frfe.support_) if supp == True ]
+              frfefeatnames = [dv.feature_names_[i].replace("attributes ", "attributes_") for i, supp in enumerate(frfe.support_) if supp == True ]
               fimpsums = sum(frfe.estimator_.feature_importances_)
               frfeimps =  sorted(zip(frfefeatnames,frfe.estimator_.feature_importances_/fimpsums),key=itemgetter(1),reverse=True)
               #print frfeimps
               #print sum([pair[1] for pair in frfeimps])
+              joblib.dump(fovs, 'frfc.pkl')
 
               #
 
@@ -741,19 +781,42 @@ def doAnalysis(city, state, category, filterConditions, k=10):
     except Exception as e:
       return [],[],[]
 
+
+
+def predictRating(factorDict):
+    dv = joblib.load('dv.pkl')
+    densevect = dv.transform(factorDict)
+    sparsevect = csr_matrix(densevect)
+    # imp = Imputer(missing_values=0.0, strategy='most_frequent', axis=0)
+    # vectdata = loadtxt('vectdata.txt')
+    # oldlen = len(vectdata[0])
+    # impvect = imp.fit(vectdata)
+    # tvect = impvect.transform(sparsevect)
+    # newlen = len(tvect[0])
+    # if newlen < oldlen:
+    #     z = zeros((1,oldlen-newlen))
+    #     testvect = append(tvect,z, axis=1)
+    # else:
+    #     testvect = tvect
+    ovs = joblib.load('rfc.pkl')
+    # result = ovs.predict(testvect)
+    result = ovs.predict(densevect)
+    return result
+
+
 #filename = 'DataVizProject\sample.txt'
-filename = 'DataVizProject\yelp_business_id_block_id_lat_long_state.txt'
-city = 'phoenix'
-state = 'az'
-category = 'restaurants'
+#filename = 'DataVizProject\yelp_business_id_block_id_lat_long_state.txt'
+#city = 'phoenix'
+#state = 'az'
+#category = 'restaurants'
 
 #formatyelpjson(filename) # call only once!!
 #getyelpjsonbyparams(filename,city,state,category)
 #getyelpincomejson(city,state,category)
-imps = []
-filterConditions = {}
+#imps = []
+#filterConditions = {}
 #run experiments for different values of k
-nbimps, gimps, aavimps = doAnalysis(city, state, category, filterConditions, 20)
+#nbimps, gimps, aavimps = doAnalysis(city, state, category, filterConditions, 20)
 #print nbimps, gimps, aavimps
 
 

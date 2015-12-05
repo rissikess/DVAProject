@@ -1,0 +1,33 @@
+#chart rect{
+	  fill: #4aaeea;
+	}
+
+
+
+	.axis text{
+	  font: 11px sans-serif;
+
+	}
+
+	.axis path, .axis line{
+	  fill: none;
+	  stroke : #000;
+	  shape-rendering: crispEdges;
+	}
+
+
+	.bar {
+	  fill: indigo;
+	}
+
+
+	.bar:hover {
+	  fill: brown;
+	}
+
+
+	.text { width:50%;}
+
+	.text{
+		font: 11px sans-serif;
+	}
